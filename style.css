@@ -1,0 +1,1184 @@
+/* ========================================================================= */
+/* --------------------------- RESET AND BASE STYLES ----------------------- */
+/* Resets default browser styles and sets up fundamental page styles.        */
+/* ========================================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Makes box model sizing more intuitive */
+}
+
+html {
+    scroll-behavior: smooth; /* Enables smooth scrolling for on-page links */
+}
+
+body {
+    font-family: 'Montserrat', sans-serif; /* Primary font for the site */
+    color: #e0e0e0; /* Default text color, light gray */
+    background: linear-gradient(to bottom, rgba(12, 3, 20, 0.99), rgba(20, 8, 35, 0.99)); /* Dark purple gradient background */
+    min-height: 100vh; /* Ensures body takes at least the full viewport height */
+    display: flex; /* Enables flexbox layout for footer sticking */
+    flex-direction: column; /* Stacks children (main, footer) vertically */
+    overflow-x: hidden; /* Prevents horizontal scrollbars */
+    line-height: 1.6; /* Default line spacing for better readability */
+}
+
+/* Class to temporarily disable vertical scrolling (e.g., when mobile nav is open) */
+body.no-scroll {
+    overflow-y: hidden;
+}
+
+/* General container for centering content and managing width */
+.container {
+    width: 90%; /* Percentage-based width for responsiveness */
+    max-width: 1200px; /* Maximum width to prevent content from becoming too wide */
+    margin: 0 auto; /* Centers the container horizontally */
+}
+
+/* ========================================================================= */
+/* --------------------------- CSS CUSTOM PROPERTIES (VARIABLES) ----------- */
+/* Defines reusable color and sizing variables for consistency.             */
+/* ========================================================================= */
+
+:root {
+    /* Primary Accent Color (e.g., for buttons, highlights) */
+    --primary-color: #FF3B5F; /* Bright pink/red */
+    --primary-color-darker: #B31E3C; /* Darker shade for base button color */
+    --primary-color-hover-border: #FF5C7A; /* Lighter shade for hover border */
+    --primary-color-hover-bg: #CC2F4F; /* Slightly darker shade for hover background */
+
+    /* Secondary Accent Color (e.g., for other interactive elements) */
+    --secondary-color: #8E2DE2; /* Purple */
+    --secondary-color-darker: #5D129C; /* Darker purple */
+    --secondary-color-hover-border: #A450ED; /* Lighter purple for hover border */
+    --secondary-color-hover-bg: #7017B8; /* Slightly darker purple for hover background */
+
+    /* Tertiary Color (often for outlines or less prominent accents) */
+    --tertiary-color: #4A00E0; /* Deep blue/purple */
+
+    /* Text Colors */
+    --text-light: #f0f0f0; /* Very light gray, almost white, for dark backgrounds */
+    --text-dark: #333;    /* Dark gray for light backgrounds (if any) */
+
+    /* Background Colors */
+    --bg-dark-primary: rgba(18, 5, 30, 0.88); /* Dark purple, slightly transparent */
+    --bg-dark-secondary: rgba(25, 10, 40, 0.85); /* Another shade of dark purple, slightly transparent */
+    --card-bg: rgba(30, 15, 50, 0.75);      /* Background for card elements, semi-transparent dark purple */
+
+    /* Sizing Variables */
+    --header-height: 70px; /* Default height for the header */
+}
+
+/* ========================================================================= */
+/* ------------------------------- HEADER STYLES --------------------------- */
+/* Styles for the site header, logo, and navigation.                       */
+/* ========================================================================= */
+
+header {
+    padding: 10px 0;
+    background-color: rgba(10, 2, 15, 0.6); /* Semi-transparent dark background */
+    backdrop-filter: blur(5px); /* Frosted glass effect for modern browsers */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle bottom border */
+    position: fixed; /* Sticks the header to the top of the viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensures header stays above other content */
+    transition: background-color 0.3s ease, padding 0.3s ease; /* Smooth transitions for scroll effects */
+}
+
+/* Styles for the header when the page is scrolled */
+header.scrolled {
+    background-color: rgba(10, 2, 15, 0.9); /* More opaque background on scroll */
+    padding: 8px 0; /* Slightly reduced padding on scroll */
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between; /* Pushes logo and nav to opposite ends */
+    align-items: center; /* Vertically aligns items in the header */
+    height: var(--header-height); /* Uses the CSS variable for height */
+}
+
+/* Logo Area */
+.logo-area {
+    display: flex;
+    align-items: center;
+}
+.logo-img {
+    height: 55px;
+    width: auto;
+    margin-right: 12px; /* Space between logo image and text (if any) */
+    object-fit: contain; /* Ensures image scales correctly without distortion */
+    transition: height 0.3s ease; /* Smooth transition for hover effect */
+}
+.logo-img:hover {
+     transform: scale(1.08) rotate(-2deg); /* Slight scale and rotation on hover */
+}
+/* Logo image size adjustment when header is scrolled */
+header.scrolled .logo-img {
+    height: 38px;
+}
+.logo-text {
+    font-size: 1.6em;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--text-light);
+}
+
+/* Desktop Navigation */
+header nav ul {
+    list-style: none; /* Removes default bullet points */
+    display: flex; /* Arranges nav items horizontally */
+}
+header nav ul li {
+    margin-left: 25px; /* Space between navigation items */
+}
+header nav ul li a {
+    text-decoration: none;
+    color: #ccc; /* Lighter gray for inactive links */
+    font-weight: 500;
+    font-size: 0.95em;
+    text-transform: capitalize;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    padding: 5px 0; /* Padding for click area and underline positioning */
+    position: relative; /* For positioning the underline pseudo-element */
+}
+header nav ul li a:hover,
+header nav ul li a.active-nav { /* Style for hovered and active navigation links */
+    color: var(--text-light);
+    text-shadow: 0 0 8px var(--primary-color); /* Glow effect using primary color */
+}
+
+/* Underline effect for navigation links */
+header nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0; /* Initially no width */
+    height: 2px;
+    bottom: -2px; /* Position below the text */
+    left: 50%;
+    transform: translateX(-50%); /* Centers the underline */
+    background-color: var(--primary-color);
+    transition: width 0.3s ease; /* Smooth transition for width change */
+}
+header nav ul li a:hover::after,
+header nav ul li a.active-nav::after {
+    width: 70%; /* Expands underline on hover/active */
+}
+
+/* Mobile Navigation Toggle (Hamburger Icon) */
+.mobile-nav-toggle {
+    display: none; /* Hidden on desktop */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001; /* Ensures toggle is above nav menu when it slides out */
+}
+.hamburger-icon { /* The middle bar of the hamburger */
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-light);
+    position: relative;
+    transition: background-color 0s 0.3s; /* Delays hiding of middle bar during transform */
+}
+.hamburger-icon::before,
+.hamburger-icon::after { /* Top and bottom bars of the hamburger */
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-light);
+    transition: transform 0.3s ease-in-out, top 0.3s ease-in-out; /* Smooth transformation to 'X' */
+}
+.hamburger-icon::before { top: -8px; } /* Position above middle bar */
+.hamburger-icon::after { top: 8px; }  /* Position below middle bar */
+
+/* Styles for hamburger when mobile menu is open (transformed into 'X') */
+.mobile-nav-toggle[aria-expanded="true"] .hamburger-icon {
+    background-color: transparent; /* Middle bar becomes invisible */
+}
+.mobile-nav-toggle[aria-expanded="true"] .hamburger-icon::before {
+    transform: rotate(45deg);
+    top: 0; /* Moves to center */
+}
+.mobile-nav-toggle[aria-expanded="true"] .hamburger-icon::after {
+    transform: rotate(-45deg);
+    top: 0; /* Moves to center */
+}
+
+/* ========================================================================= */
+/* ------------------------ MAIN CONTENT AND HERO SECTION ------------------ */
+/* Styles for the main content wrapper and the prominent hero area.        */
+/* ========================================================================= */
+
+main {
+    flex-grow: 1; /* Allows main content to take up available space (for footer sticking) */
+    padding-top: calc(var(--header-height) + 20px); /* Top padding to avoid overlap with fixed header */
+}
+
+#hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: calc(100vh - (var(--header-height) + 20px)); /* Hero section takes almost full viewport height */
+    text-align: center;
+    width: 100%;
+    position: relative;
+    /* Background image with a semi-transparent color overlay. 'fixed' creates a parallax-like effect. */
+    background: linear-gradient(rgba(15, 5, 25, 0.7), rgba(15, 5, 25, 0.7)), url('img/my-background.png') no-repeat center center fixed;
+    background-size: cover; /* Ensures background image covers the entire area */
+    overflow: hidden; /* Can prevent minor overflow issues with parallax or absolutely positioned children */
+    padding: 40px 20px 20px 20px; /* Padding inside the hero section */
+}
+
+/* Wrapper for the hero text slider content */
+.hero-slider-content-wrapper {
+    position: relative; /* Establishes a positioning context for slides */
+    width: 100%;
+    max-width: 850px; /* Max width for the text content within the hero */
+    min-height: 48vh; /* Minimum height to ensure content is visible */
+    display: flex;
+    align-items: center; /* Vertically centers slide content */
+    justify-content: center; /* Horizontally centers slide content */
+    flex-grow: 1; /* Allows wrapper to take available vertical space within hero */
+}
+
+/* Individual hero slide text containers */
+.hero-slide-text {
+    position: absolute; /* Allows slides to overlap for transitions */
+    top: 50%;
+    left: 50%;
+    width: 95%; /* Relative width */
+    max-width: 100%;
+    transform: translate(-50%, -50%); /* Centers the slide */
+    opacity: 0; /* Initially hidden */
+    visibility: hidden; /* Initially not visible and not interactive */
+    transition: opacity 0.8s ease-in-out, visibility 0s linear 0.8s; /* Fade transition */
+    z-index: 1;
+}
+/* Styles for the currently active hero slide */
+.hero-slide-text.active-slide {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.8s ease-in-out, visibility 0s linear 0s;
+    z-index: 2; /* Ensures active slide is on top */
+}
+
+/* Inner content wrapper for animations within a slide */
+.hero-slide-inner-content {
+    animation: fadeInHeroContent 0.8s ease-out 0.2s backwards; /* Entry animation for content */
+}
+@keyframes fadeInHeroContent {
+    from { opacity: 0; transform: translateY(15px); } /* Starts slightly down and faded out */
+    to { opacity: 1; transform: translateY(0); }   /* Fades in and moves up */
+}
+/* Re-trigger animation when a slide becomes active (handled by JS removing and adding animation) */
+.hero-slide-text.active-slide .hero-slide-inner-content {
+    animation-name: fadeInHeroContent; /* Ensures animation re-runs if class is re-applied */
+}
+
+/* Hero headline styling */
+.hero-slide-inner-content h1 {
+    margin-bottom: 15px;
+    line-height: 1.15;
+}
+.hero-slide-inner-content h1 .line1 {
+    display: block; /* Puts each line on its own... line */
+    font-size: clamp(1.5em, 3.8vw, 2.2em); /* Responsive font size */
+    font-weight: 900;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 0 8px var(--primary-color); /* Glow effect */
+}
+.hero-slide-inner-content h1 .line2 {
+    display: block;
+    font-size: clamp(1.8em, 4.5vw, 2.8em); /* Responsive font size, larger than line1 */
+    font-weight: 900;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 3px;
+    text-shadow: 0 0 8px rgba(255,255,255,0.2); /* Subtle white glow */
+}
+/* Hero paragraph styling */
+.hero-slide-inner-content p {
+    font-size: clamp(0.85em, 2vw, 1.0em); /* Responsive font size */
+    line-height: 1.5;
+    color: #c0c0c0; /* Slightly lighter gray than default text */
+    text-shadow: 0 0 3px rgba(0,0,0,0.5); /* Subtle dark shadow for readability on image */
+    margin-bottom: 30px;
+    max-width: 600px; /* Constrains width for better readability */
+    margin-left: auto;
+    margin-right: auto;
+}
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between buttons */
+    flex-wrap: wrap; /* Allows buttons to wrap on smaller screens */
+}
+
+/* Navigation dots for the hero slider */
+.hero-navigation-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Space between dots */
+    z-index: 3; /* Ensures dots are above slide text content */
+    margin-top: auto; /* Pushes dots to the bottom of the flex container (.hero) */
+    padding-top: 15px; /* Space above dots */
+    padding-bottom: 10px; /* Space below dots */
+}
+.hero-navigation-dots .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%; /* Makes it a circle */
+    background-color: rgba(255, 255, 255, 0.4); /* Semi-transparent white */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border: none; /* Remove default button border */
+    padding:0; /* Remove default button padding */
+}
+.hero-navigation-dots .dot:hover {
+    background-color: rgba(255, 255, 255, 0.7); /* More opaque on hover */
+    transform: scale(1.2); /* Slight zoom on hover */
+}
+.hero-navigation-dots .dot.active-dot {
+    background-color: var(--primary-color); /* Uses primary color for active dot */
+    transform: scale(1.3); /* Larger zoom for active dot */
+    box-shadow: 0 0 8px var(--primary-color); /* Glow effect for active dot */
+}
+
+
+/* ========================================================================= */
+/* --------------------------- GENERAL BUTTON STYLES ----------------------- */
+/* Base styles for buttons, extended by specific button types.             */
+/* ========================================================================= */
+
+.btn {
+    padding: 12px 28px;
+    border-radius: 10px; /* Rounded corners */
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    letter-spacing: 0.7px;
+    transition: transform 0.2s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+    border: 2px solid transparent; /* Transparent border initially, colored by specific button styles */
+    cursor: pointer;
+    display: inline-block; /* Allows setting width/height/padding */
+}
+.btn:hover {
+    transform: translateY(-3px) scale(1.02); /* Slight lift and zoom effect on hover */
+}
+
+/* Primary Button Style */
+.btn-primary {
+    background-color: var(--primary-color-darker);
+    color: var(--text-light);
+    border: 2px solid var(--primary-color);
+    /* Multi-layered box shadow for a neon glow effect */
+    box-shadow: 0 0 6px 0px var(--primary-color),
+                0 0 10px 0px rgba(255, 59, 95, 0.7),
+                0 0 18px 0px rgba(255, 59, 95, 0.4);
+}
+.btn-primary:hover {
+    background-color: var(--primary-color-hover-bg);
+    border-color: var(--primary-color-hover-border);
+    /* Enhanced glow on hover */
+    box-shadow: 0 0 8px 0px var(--primary-color-hover-border),
+                0 0 15px 0px rgba(255, 92, 122, 0.8),
+                0 0 25px 0px rgba(255, 92, 122, 0.5);
+}
+
+/* Secondary Button Style */
+.btn-secondary {
+    background-color: var(--secondary-color-darker);
+    color: var(--text-light);
+    border: 2px solid var(--secondary-color);
+    box-shadow: 0 0 6px 0px var(--secondary-color),
+                0 0 10px 0px rgba(142, 45, 226, 0.7),
+                0 0 18px 0px rgba(142, 45, 226, 0.4);
+}
+.btn-secondary:hover {
+    background-color: var(--secondary-color-hover-bg);
+    border-color: var(--secondary-color-hover-border);
+    box-shadow: 0 0 8px 0px var(--secondary-color-hover-border),
+                0 0 15px 0px rgba(164, 80, 237, 0.8),
+                0 0 25px 0px rgba(164, 80, 237, 0.5);
+}
+
+/* Tertiary Button Style (Outline/Ghost button) */
+.btn-tertiary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 6px 0px rgba(255, 59, 95, 0.2); /* Subtle glow */
+}
+.btn-tertiary:hover {
+    background-color: rgba(255, 59, 95, 0.1); /* Light primary color fill on hover */
+    color: var(--text-light); /* Text color changes on hover for better contrast */
+    border-color: #ff5074; /* Slightly lighter primary color for border */
+    box-shadow: 0 0 12px 1px rgba(255, 59, 95, 0.4); /* Enhanced glow */
+}
+
+/* ========================================================================= */
+/* ------------------------- CONTENT SECTION STYLING ----------------------- */
+/* General styles for repeatable content sections (philosophy, benefits etc). */
+/* ========================================================================= */
+
+.content-section {
+    padding: 70px 0; /* Vertical padding */
+    background-color: var(--bg-dark-primary); /* Default background for sections */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Subtle separator */
+}
+/* Alternate background color for even-numbered sections */
+.content-section:nth-child(even) {
+    background-color: var(--bg-dark-secondary);
+}
+
+/* Section Titles (H2) */
+.content-section h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: clamp(1.8em, 5vw, 2.5em); /* Responsive font size */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 0 8px rgba(255, 59, 95, 0.4); /* Glow effect for title */
+}
+/* Icon within section titles */
+.content-section .icon img {
+    vertical-align: middle; /* Aligns icon nicely with text */
+    margin-right: 10px; /* Space between icon and text */
+   /* filter: drop-shadow(0 0 5px var(--primary-color));  Glow for icon */
+}
+/* Section Subtitles */
+.content-section .section-subtitle {
+    text-align: center;
+    color: #b0b0b0; /* Lighter gray */
+    margin-bottom: 40px; /* Adjusted margin */
+    font-size: clamp(1em, 3vw, 1.15em); /* Responsive font size */
+    max-width: 700px; /* Constrains width for readability */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Styles for elements animated on scroll */
+.animate-on-scroll {
+    opacity: 0; /* Initially hidden */
+    transform: translateY(30px); /* Initially moved down */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth fade-in and move-up animation */
+}
+.animate-on-scroll.is-visible { /* Class added by JS when element is in viewport */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Philosophy Section Text Styling */
+.philosophy-content {
+    color: #c0c0c0; /* Slightly lighter than default body text for emphasis */
+}
+
+.philosophy-content p {
+    margin-bottom: 25px; /* Consistent spacing between paragraphs */
+    line-height: 1.7; /* Slightly increased line height for readability */
+}
+
+/* Centering for specific philosophy paragraphs */
+.philosophy-content > p:first-of-type,
+.philosophy-content > p:nth-of-type(2) { /* First and second paragraph */
+    text-align: center;
+    max-width: 800px; /* Ensure centered text isn't too wide */
+    margin-left: auto;
+    margin-right: auto;
+}
+.philosophy-content > p:nth-of-type(2) {
+    margin-bottom: 40px; /* More space before pillars */
+}
+
+/* Styling for the concluding philosophy paragraph */
+.philosophy-content > p:last-of-type {
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--secondary-color); /* Purple color */
+    font-weight: 600; /* Subtitle-like weight */
+    font-size: clamp(1.05em, 3.2vw, 1.2em); /* Slightly larger */
+    line-height: 1.65; 
+    margin-top: 40px; /* Space above */
+    text-shadow: 0 0 6px rgba(142, 45, 226, 0.35); /* Subtle purple glow */
+}
+
+
+/* Specific layout for 'Pilares' (Pillars) section */
+.pilares-grid {
+    display: grid;
+    /* Creates responsive columns: they fit if min 280px, else wrap */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px; /* Space between grid items */
+    margin: 40px 0; /* Vertical margin */
+}
+.pilar-card {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 10px;
+    border-left: 4px solid var(--secondary-color); /* Accent border on the left */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2), 0 0 10px rgba(142, 45, 226, 0.1) inset; /* Outer and inner shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.pilar-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 15px rgba(142, 45, 226, 0.2) inset; /* Enhanced shadow on hover */
+}
+.pilar-card h4 {
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+.pilar-card p {
+    font-size: 0.95em;
+    color: #b0b0b0;
+}
+
+/* Specific layout for 'Benefits' section */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+.benefit-item {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    border-top: 3px solid var(--primary-color); /* Accent border on top */
+    transition: transform 0.3s ease;
+}
+.benefit-item:hover {
+    transform: scale(1.03); /* Slight zoom effect on hover */
+}
+.benefit-icon {
+    font-size: 2.5em; /* For emoji icons */
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    text-shadow: 0 0 8px var(--primary-color); /* Glow for emoji */
+}
+.benefit-icon img { /* For image icons */
+    /*filter: drop-shadow(0 0 5px var(--primary-color));  Glow for image icon */
+}
+.benefit-item h3 {
+    color: var(--text-light);
+    margin-bottom: 10px;
+    font-size: 1.25em;
+}
+
+/* Styles for embedded video */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio (9 / 16 * 100) */
+    height: 0; /* Required for aspect ratio padding trick */
+    overflow: hidden;
+    max-width: 800px; /* Max width for the video player */
+    margin: 0 auto 30px auto; /* Center and add bottom margin */
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+.video-wrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px; /* Match wrapper's border radius if video element itself is rounded */
+}
+.video-cta { /* Call to action below the video */
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* Styles for 'Programs' section cards */
+.program-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+.program-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden; /* Clips child elements (like image) to the rounded corners */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; /* Flex layout to manage content distribution */
+    flex-direction: column; /* Stacks image and content vertically */
+}
+.program-card:hover {
+    transform: translateY(-8px); /* Larger lift effect on hover */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35), 0 0 15px var(--primary-color); /* Enhanced shadow and primary color glow */
+}
+.program-card img {
+    width: 100%;
+    height: 200px; /* Fixed height for program images */
+    object-fit: cover; /* Ensures image covers the area, may crop */
+    border-bottom: 3px solid var(--primary-color); /* Accent border below image */
+}
+.program-card-content {
+    padding: 20px;
+    flex-grow: 1; /* Allows content to take available space, pushing button down if needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes title/text up and button down */
+}
+.program-card-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 1.3em;
+}
+.program-card-content p {
+    margin-bottom: 20px;
+    font-size: 0.95em;
+    flex-grow: 1; /* Allows paragraph to expand, useful if titles vary in length */
+}
+.program-card-content .btn {
+    align-self: flex-start; /* Aligns button to the start (left) of the flex container */
+}
+
+/* Styles for 'Schedule' section image and CTA */
+.schedule-image {
+    display: block; /* Removes extra space below image */
+    max-width: 100%;
+    height: auto; /* Maintains aspect ratio */
+    margin: 0 auto 40px auto; /* Centers and adds bottom margin */
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+.schedule-cta {
+    text-align: center;
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 30px; /* Space above CTA if image is short */
+    border-top: 3px solid var(--secondary-color); /* Accent border */
+}
+.schedule-cta h3 {
+    color: var(--secondary-color);
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+/* MODIFICATION: Add margin-top to the button within the schedule CTA */
+.schedule-cta .btn {
+    margin-top: 25px; /* Increased space above the button */
+}
+
+/* Styles for 'Instructor' section */
+.instructor-content {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+    align-items: center; /* Vertically aligns image and bio */
+    gap: 40px; /* Space between image and bio */
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.instructor-image {
+    width: clamp(180px, 25vw, 280px); /* Responsive width: min 180px, ideal 25% viewport, max 280px */
+    aspect-ratio: 1 / 1; /* Maintain a square shape, which becomes a circle with border-radius */
+    border-radius: 50%;  /* Makes the container circular */
+    overflow: hidden;    /* Clips the image inside to the circular shape */
+    margin: 0 auto 20px auto; /* Centering for responsive stacking */
+    border: 5px solid var(--secondary-color); /* Accent border on the circular frame */
+    box-shadow: 0 0 20px rgba(142, 45, 226, 0.4); /* Glow effect on the frame */
+    position: relative; 
+}
+
+.instructor-image img {
+    width: 100%;
+    height: 100%; /* Image fills the circular container */
+    object-fit: cover; /* Scales image to maintain aspect ratio while filling the container; crops excess */
+    display: block; /* Removes any potential extra space below the image */
+}
+
+.instructor-bio {
+    flex: 2 1 400px; /* Bio takes more space if available */
+}
+.instructor-bio h3 {
+    color: var(--secondary-color);
+    font-size: 1.8em;
+    margin-bottom: 20px; /* Increased margin */
+    text-align: center; /* Center instructor name */
+}
+.instructor-bio p {
+    color: #c0c0c0;
+    margin-bottom: 15px;
+    line-height: 1.7;
+     /* text-align: justify; /* Optional: for a blockier look, but can create uneven spacing */
+}
+.instructor-bio p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* Styles for 'Testimonials' section auto-scroller */
+.testimonial-scroll-wrapper {
+    max-height: 300px; /* Fixed height for the scrollable area */
+    overflow-y: hidden; /* Hides the native scrollbar, JS handles scrolling */
+    position: relative; /* For potential future absolutely positioned controls if any */
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 10px;
+    border-radius: 8px;
+    background-color: rgba(0,0,0,0.1); /* Slightly darker background for the wrapper */
+}
+.testimonial-item {
+    padding: 20px;
+    margin-bottom: 15px; /* Space between testimonials */
+    background-color: rgba(255,255,255,0.03); /* Very subtle background for items */
+    border-radius: 5px;
+    border-left: 3px solid var(--secondary-color); /* Accent border */
+}
+.testimonial-item p { /* The testimonial quote itself */
+    font-style: italic;
+    margin-bottom: 10px;
+    color: #d0d0d0;
+}
+.testimonial-item cite { /* The person who gave the testimonial */
+    display: block;
+    text-align: right;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+/* Styles for 'Contact' section */
+/* Decorative logo in H2 for contact section */
+#contact h2 .h2-logo {
+    width: 35px;
+    height: auto;
+    vertical-align: middle;
+    margin: 0 10px; /* Space around the logo */
+    filter: drop-shadow(0 0 8px var(--primary-color));
+}
+
+/* NEW: Styles for Student Group Photo in Contact Section */
+.student-group-photo-container {
+    text-align: center; /* Center the image */
+    margin-top: 30px; /* Space above the image container */
+    margin-bottom: 50px; /* Space below image, before contact form/info */
+    padding: 0 15px; /* Add some horizontal padding for very wide images on small screens */
+}
+.student-group-photo {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    border: 5px solid var(--secondary-color-darker); /* Optional: adds a subtle border */
+}
+
+.contact-flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px; /* Space between info and form columns */
+    margin-top: 30px;
+}
+.contact-info,
+.contact-form-container {
+    flex: 1 1 400px; /* Allows columns to grow and shrink responsively */
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 10px;
+}
+.contact-info p {
+    margin-bottom: 12px;
+}
+.contact-info a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.contact-info a:hover {
+    color: #ff5074; /* Lighter primary color on hover */
+}
+.social-links { 
+    margin-top: 15px !important;
+}
+.social-icon {
+    width: 35px;
+    height: 35px;
+    margin-right: 15px; /* Space between social icons */
+    opacity: 0.8;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.social-icon:hover {
+    opacity: 1;
+    transform: scale(1.1); /* Slight zoom on hover */
+}
+.map-container {
+    margin-top: 25px; /* Space above the map */
+}
+
+/* Contact Form specific styles */
+.contact-form-container h3 {
+    color: var(--text-light);
+    margin-bottom: 20px;
+    text-align: center;
+}
+.form-group {
+    margin-bottom: 20px; /* Space between form fields */
+}
+.form-group label {
+    display: block; /* Puts label on its own line */
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #ccc;
+}
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.2); /* Subtle border */
+    background-color: rgba(255,255,255,0.05); /* Very subtle background fill */
+    color: var(--text-light);
+    font-family: 'Montserrat', sans-serif; /* Inherit body font */
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.form-group input[type="text"]::placeholder,
+.form-group input[type="email"]::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(255,255,255,0.4); /* Lighter color for placeholder text */
+}
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    outline: none; /* Remove default browser outline */
+    border-color: var(--primary-color); /* Highlight with primary color on focus */
+    box-shadow: 0 0 8px rgba(255, 59, 95, 0.3); /* Glow effect on focus */
+}
+.form-group textarea {
+    min-height: 120px; /* Minimum height for textarea */
+    resize: vertical; /* Allow vertical resizing only */
+}
+
+/* Styles for form validation messages (JS controlled) */
+.error-message { /* Inline error message for individual fields */
+    display: none; /* Hidden by default */
+    color: #ff6b6b; /* Bright red for errors */
+    font-size: 0.85em;
+    margin-top: 5px;
+}
+input.error,
+textarea.error { /* Style for input fields with validation errors */
+    border-color: #ff6b6b !important; /* Force error border color */
+}
+#formStatus { /* Overall form submission status message */
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 500;
+    display: none; /* Hidden by default */
+}
+#formStatus.success {
+    background-color: rgba(46, 204, 113, 0.2); /* Greenish for success */
+    color: #2ecc71;
+    border: 1px solid #2ecc71;
+}
+#formStatus.error {
+    background-color: rgba(231, 76, 60, 0.2); /* Reddish for error */
+    color: #e74c3c;
+    border: 1px solid #e74c3c;
+}
+#formStatus.info {
+    background-color: rgba(52, 152, 219, 0.2); /* Bluish for info/pending */
+    color: #3498db;
+    border: 1px solid #3498db;
+}
+
+
+/* ========================================================================= */
+/* --------------------------------- FOOTER -------------------------------- */
+/* Styles for the site footer.                                             */
+/* ========================================================================= */
+
+footer {
+    text-align: center;
+    padding: 30px 0;
+    background-color: rgba(5, 0, 10, 0.85); /* Dark background for footer */
+    color: #aaa; /* Lighter gray text */
+    font-size: 0.9em;
+    border-top: 1px solid rgba(255, 255, 255, 0.08); /* Subtle top border */
+}
+
+/* ========================================================================= */
+/* ------------------------ FLOATING ACTION BUTTONS ------------------------ */
+/* Styles for fixed position buttons like WhatsApp and Back to Top.        */
+/* ========================================================================= */
+
+/* Floating WhatsApp Button */
+.whatsapp-float {
+    position: fixed;
+    width: 55px;
+    height: 55px;
+    bottom: 25px;
+    right: 25px;
+    background-color: #25D366; /* WhatsApp green */
+    color: #FFF;
+    border-radius: 50px; /* Circular button */
+    text-align: center;
+    font-size: 30px; /* Icon size (if using font icon) */
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    z-index: 100; /* Ensures it's above most content but below modals/header if needed */
+    display: flex; /* For centering the icon image */
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.whatsapp-float img { /* Icon image inside the button */
+    width: 30px;
+    height: 30px;
+}
+.whatsapp-float:hover {
+    transform: scale(1.1); /* Zoom on hover */
+    background-color: #1EBE57; /* Slightly darker green on hover */
+}
+
+/* Back to Top Button */
+#backToTopBtn {
+    display: none; /* Initially hidden, shown by JS on scroll */
+    position: fixed;
+    bottom: 90px; /* Positioned above the WhatsApp button */
+    right: 30px;
+    z-index: 99; /* Below WhatsApp button if they overlap, above general content */
+    border: none;
+    outline: none;
+    background-color: var(--secondary-color);
+    color: white;
+    cursor: pointer;
+    padding: 0; /* Remove default padding */
+    border-radius: 50%; /* Circular button */
+    width: 45px;
+    height: 45px;
+    font-size: 20px; /* Arrow icon size */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    opacity: 0.8; /* Slightly transparent by default */
+}
+#backToTopBtn:hover {
+    background-color: var(--tertiary-color);
+    opacity: 1; /* Fully opaque on hover */
+}
+
+/* ========================================================================= */
+/* ---------------------------- RESPONSIVE DESIGN -------------------------- */
+/* Media queries to adjust styles for different screen sizes.              */
+/* ========================================================================= */
+
+/* Medium screens (e.g., tablets, smaller desktops) */
+@media (max-width: 992px) {
+    /* Adjust header height variable for smaller screens */
+    :root {
+        --header-height: 60px;
+    }
+    .header-container {
+        height: var(--header-height);
+    }
+
+    /* Mobile Navigation Styles */
+    header nav { /* This is the mobile navigation menu container */
+        display: none; /* Hidden by default, shown by JS */
+        position: absolute;
+        top: var(--header-height); /* Position below the header */
+        left: 0;
+        width: 100%;
+        background-color: rgba(15, 5, 30, 0.98); /* Dark, nearly opaque background */
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    }
+    header nav.is-active { /* Class added by JS to show the mobile menu */
+        display: flex;
+    }
+    header nav ul { /* Stack navigation items vertically */
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+    header nav ul li {
+        margin: 0; /* Remove horizontal margin */
+        width: 100%;
+    }
+    header nav ul li a {
+        display: block; /* Make links take full width for easier tapping */
+        padding: 15px 0; /* Larger padding for tap targets */
+        font-size: 1.1em;
+        border-bottom: 1px solid rgba(255,255,255,0.05); /* Separator lines */
+    }
+    header nav ul li:last-child a {
+        border-bottom: none; /* Remove border from last item */
+    }
+    header nav ul li a::after { /* Hide desktop underline effect on mobile */
+        display: none;
+    }
+    .mobile-nav-toggle { /* Show the hamburger icon */
+        display: block;
+    }
+
+    /* Adjust main content padding for new header height */
+    main {
+        padding-top: calc(var(--header-height) + 10px);
+    }
+    /* Adjust hero section min-height and padding */
+    #hero {
+        min-height: calc(100vh - (var(--header-height) + 10px));
+        padding: 30px 15px 15px 15px;
+    }
+    .hero-slider-content-wrapper {
+        min-height: 50vh; /* Adjust hero slider content height */
+    }
+    .hero-slide-inner-content h1 .line1 { font-size: clamp(1.4em, 3.5vw, 2em); }
+    .hero-slide-inner-content h1 .line2 { font-size: clamp(1.8em, 4.5vw, 2.6em); }
+    .hero-slide-inner-content p { font-size: clamp(0.8em, 1.8vw, 0.95em); }
+    .hero-navigation-dots { margin-top: 10px; padding-top:10px; padding-bottom: 5px;}
+
+
+    /* Adjust layout for specific sections */
+    .instructor-content { /* Stack instructor image and bio */
+        flex-direction: column;
+         /* text-align: center; Keep default (left) for bio, h3 is already centered */
+    }
+    .instructor-image {
+        /* width: clamp(180px, 30vw, 250px); /* Slightly smaller max for medium screens */
+        margin: 0 auto 30px auto; /* More bottom margin when stacked */
+    }
+    .instructor-bio h3 {
+        text-align: center; /* Ensure instructor name is centered on medium screens too */
+    }
+     .instructor-bio p { /* On medium screens, when stacked, center bio text */
+        text-align: center;
+        max-width: 500px; /* Constrain width for better readability */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+}
+
+/* Small screens (e.g., mobile phones) */
+@media (max-width: 600px) {
+    .content-section .section-subtitle {
+        margin-bottom: 30px;
+    }
+    .philosophy-content > p:first-of-type,
+    .philosophy-content > p:nth-of-type(2),
+    .philosophy-content > p:last-of-type {
+        padding: 0 10px; /* Add some horizontal padding for very narrow screens */
+    }
+    .philosophy-content > p:nth-of-type(2) {
+        margin-bottom: 30px;
+    }
+    .philosophy-content > p:last-of-type {
+        font-size: clamp(1em, 3.5vw, 1.15em); /* Adjust size for smaller screens */
+    }
+
+
+    /* Hero Section Adjustments */
+    #hero {
+        padding: 20px 10px 10px 10px; /* Further reduce padding */
+    }
+    .hero-slide-inner-content h1 .line1 {
+        font-size: 1.3em; /* Smaller font size for headlines */
+        letter-spacing: 0.5px;
+    }
+    .hero-slide-inner-content h1 .line2 {
+        font-size: 1.8em;
+        letter-spacing: 0.5px;
+    }
+    .hero-slide-inner-content p {
+        font-size: 0.8em;
+        margin-bottom: 20px;
+        line-height: 1.4;
+    }
+    .hero-slider-content-wrapper {
+        min-height: 55vh; /* May need more vertical space for content on small screens */
+    }
+    .hero-navigation-dots {
+      margin-top: auto; /* Ensure dots are at the bottom within the hero content area */
+      padding-top: 10px;
+      padding-bottom: 5px;
+    }
+
+    /* Hero Buttons: stack vertically */
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center; /* Center buttons when stacked */
+        gap: 12px;
+    }
+    .btn { /* Make buttons take more width on small screens */
+        width: 80%;
+        max-width: 260px;
+        text-align: center;
+        padding: 12px 15px; /* Adjust padding */
+        font-size: 0.75em; /* Smaller font size for buttons */
+    }
+
+    /* Content Section Titles */
+    .content-section h2 {
+        font-size: 1.6em;
+    }
+    .content-section .section-subtitle {
+        font-size: 0.9em;
+    }
+
+    /* Grid Layouts: stack to single column */
+    .pilares-grid,
+    .benefits-grid,
+    .program-cards {
+        grid-template-columns: 1fr; /* Single column layout */
+    }
+    
+    .instructor-image {
+        width: clamp(150px, 40vw, 200px); /* Adjust for smaller screens */
+    }
+
+    /* Contact Section Flex Layout */
+    .contact-flex-container {
+        gap: 20px; /* Reduce gap */
+    }
+    .contact-info,
+    .contact-form-container {
+        padding: 15px; /* Reduce padding */
+    }
+    .student-group-photo-container {
+        margin-bottom: 30px;
+    }
+
+
+    /* Floating Action Buttons: adjust size and position */
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+    }
+    .whatsapp-float img {
+        width: 25px;
+        height: 25px;
+    }
+    #backToTopBtn {
+        bottom: 80px; /* Adjust to stay above WhatsApp button */
+        right: 22px;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+}
