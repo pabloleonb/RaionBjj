@@ -1,107 +1,99 @@
 /* ========================================================================= */
 /* --------------------------- RESET AND BASE STYLES ----------------------- */
-/* Resets default browser styles and sets up fundamental page styles.        */
 /* ========================================================================= */
 
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Makes box model sizing more intuitive */
+    box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth; /* Enables smooth scrolling for on-page links */
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Montserrat', sans-serif; /* Primary font for the site */
-    color: #e0e0e0; /* Default text color, light gray */
-    background: linear-gradient(to bottom, rgba(12, 3, 20, 0.99), rgba(20, 8, 35, 0.99)); /* Dark purple gradient background */
-    min-height: 100vh; /* Ensures body takes at least the full viewport height */
-    display: flex; /* Enables flexbox layout for footer sticking */
-    flex-direction: column; /* Stacks children (main, footer) vertically */
-    overflow-x: hidden; /* Prevents horizontal scrollbars */
-    line-height: 1.6; /* Default line spacing for better readability */
+    font-family: 'Montserrat', sans-serif;
+    color: #e0e0e0;
+    background-image: linear-gradient(to bottom, rgba(12, 3, 20, 0.99), rgba(20, 8, 35, 0.99));
+    background-color: #0c0314; /* Fallback color */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    line-height: 1.6;
 }
 
-/* Class to temporarily disable vertical scrolling (e.g., when mobile nav is open) */
 body.no-scroll {
     overflow-y: hidden;
 }
 
-/* General container for centering content and managing width */
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    z-index: -1;
+}
+
 .container {
-    width: 90%; /* Percentage-based width for responsiveness */
-    max-width: 1200px; /* Maximum width to prevent content from becoming too wide */
-    margin: 0 auto; /* Centers the container horizontally */
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* ========================================================================= */
-/* --------------------------- CSS CUSTOM PROPERTIES (VARIABLES) ----------- */
-/* Defines reusable color and sizing variables for consistency.             */
+/* --------------------------- CSS CUSTOM PROPERTIES ----------------------- */
 /* ========================================================================= */
 
 :root {
-    /* Primary Accent Color (e.g., for buttons, highlights) */
-    --primary-color: #FF3B5F; /* Bright pink/red */
-    --primary-color-darker: #B31E3C; /* Darker shade for base button color */
-    --primary-color-hover-border: #FF5C7A; /* Lighter shade for hover border */
-    --primary-color-hover-bg: #CC2F4F; /* Slightly darker shade for hover background */
-
-    /* Secondary Accent Color (e.g., for other interactive elements) */
-    --secondary-color: #8E2DE2; /* Purple */
-    --secondary-color-darker: #5D129C; /* Darker purple */
-    --secondary-color-hover-border: #A450ED; /* Lighter purple for hover border */
-    --secondary-color-hover-bg: #7017B8; /* Slightly darker purple for hover background */
-
-    /* Tertiary Color (often for outlines or less prominent accents) */
-    --tertiary-color: #4A00E0; /* Deep blue/purple */
-
-    /* Text Colors */
-    --text-light: #f0f0f0; /* Very light gray, almost white, for dark backgrounds */
-    --text-dark: #333;    /* Dark gray for light backgrounds (if any) */
-
-    /* Background Colors */
-    --bg-dark-primary: rgba(18, 5, 30, 0.88); /* Dark purple, slightly transparent */
-    --bg-dark-secondary: rgba(25, 10, 40, 0.85); /* Another shade of dark purple, slightly transparent */
-    --card-bg: rgba(30, 15, 50, 0.75);      /* Background for card elements, semi-transparent dark purple */
-
-    /* Sizing Variables */
-    --header-height: 70px; /* Default height for the header */
+    --primary-color: #FF3B5F;
+    --primary-color-darker: #B31E3C;
+    --primary-color-hover-border: #FF5C7A;
+    --primary-color-hover-bg: #CC2F4F;
+    --secondary-color: #8E2DE2;
+    --secondary-color-darker: #5D129C;
+    --secondary-color-hover-border: #A450ED;
+    --secondary-color-hover-bg: #7017B8;
+    --tertiary-color: #4A00E0;
+    --text-light: #f0f0f0;
+    --text-dark: #333;
+    --bg-dark-primary: rgba(18, 5, 30, 0.88);
+    --bg-dark-secondary: rgba(25, 10, 40, 0.85);
+    --card-bg: rgba(30, 15, 50, 0.75);
+    --header-height: 70px;
 }
 
 /* ========================================================================= */
 /* ------------------------------- HEADER STYLES --------------------------- */
-/* Styles for the site header, logo, and navigation.                       */
 /* ========================================================================= */
 
 header {
     padding: 10px 0;
-    background-color: rgba(10, 2, 15, 0.6); /* Semi-transparent dark background */
-    backdrop-filter: blur(5px); /* Frosted glass effect for modern browsers */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle bottom border */
-    position: fixed; /* Sticks the header to the top of the viewport */
+    background-color: rgba(10, 2, 15, 0.6);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000; /* Ensures header stays above other content */
-    transition: background-color 0.3s ease, padding 0.3s ease; /* Smooth transitions for scroll effects */
+    z-index: 1000;
+    transition: background-color 0.3s ease, padding 0.3s ease;
 }
 
-/* Styles for the header when the page is scrolled */
 header.scrolled {
-    background-color: rgba(10, 2, 15, 0.9); /* More opaque background on scroll */
-    padding: 8px 0; /* Slightly reduced padding on scroll */
+    background-color: rgba(10, 2, 15, 0.9);
+    padding: 8px 0;
 }
 
 .header-container {
     display: flex;
-    justify-content: space-between; /* Pushes logo and nav to opposite ends */
-    align-items: center; /* Vertically aligns items in the header */
-    height: var(--header-height); /* Uses the CSS variable for height */
+    justify-content: space-between;
+    align-items: center;
+    height: var(--header-height);
 }
 
-/* Logo Area */
 .logo-area {
     display: flex;
     align-items: center;
@@ -109,434 +101,433 @@ header.scrolled {
 .logo-img {
     height: 55px;
     width: auto;
-    margin-right: 12px; /* Space between logo image and text (if any) */
-    object-fit: contain; /* Ensures image scales correctly without distortion */
-    transition: height 0.3s ease; /* Smooth transition for hover effect */
+    margin-right: 12px;
+    object-fit: contain;
+    transition: height 0.3s ease, transform 0.3s ease;
 }
 .logo-img:hover {
-     transform: scale(1.08) rotate(-2deg); /* Slight scale and rotation on hover */
+     transform: scale(1.08) rotate(-2deg);
 }
-/* Logo image size adjustment when header is scrolled */
 header.scrolled .logo-img {
     height: 38px;
 }
-.logo-text {
-    font-size: 1.6em;
-    font-weight: 700;
-    letter-spacing: 1px;
-    color: var(--text-light);
-}
 
-/* Desktop Navigation */
+header nav {
+    display: none; /* Hidden by default, shown on desktop via media query */
+}
 header nav ul {
-    list-style: none; /* Removes default bullet points */
-    display: flex; /* Arranges nav items horizontally */
+    list-style: none;
+    display: flex;
 }
 header nav ul li {
-    margin-left: 25px; /* Space between navigation items */
+    margin-left: 25px;
 }
 header nav ul li a {
     text-decoration: none;
-    color: #ccc; /* Lighter gray for inactive links */
+    color: #ccc;
     font-weight: 500;
     font-size: 0.95em;
     text-transform: capitalize;
     transition: color 0.3s ease, text-shadow 0.3s ease;
-    padding: 5px 0; /* Padding for click area and underline positioning */
-    position: relative; /* For positioning the underline pseudo-element */
+    padding: 5px 0;
+    position: relative;
 }
 header nav ul li a:hover,
-header nav ul li a.active-nav { /* Style for hovered and active navigation links */
+header nav ul li a.active-nav {
     color: var(--text-light);
-    text-shadow: 0 0 8px var(--primary-color); /* Glow effect using primary color */
+    text-shadow: 0 0 8px var(--primary-color);
 }
 
-/* Underline effect for navigation links */
 header nav ul li a::after {
     content: '';
     position: absolute;
-    width: 0; /* Initially no width */
-    height: 2px;
-    bottom: -2px; /* Position below the text */
+    width: 0;
+    height: 5px;
+    bottom: -5px;
     left: 50%;
-    transform: translateX(-50%); /* Centers the underline */
+    transform: translateX(-50%);
     background-color: var(--primary-color);
-    transition: width 0.3s ease; /* Smooth transition for width change */
-}
-header nav ul li a:hover::after,
-header nav ul li a.active-nav::after {
-    width: 70%; /* Expands underline on hover/active */
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    transition: width 0.4s ease;
 }
 
-/* Mobile Navigation Toggle (Hamburger Icon) */
+header nav ul li a:hover::after,
+header nav ul li a.active-nav::after {
+    width: 100%;
+}
+
+
+/* --- Mobile Navigation --- */
 .mobile-nav-toggle {
-    display: none; /* Hidden on desktop */
+    display: none; /* Hidden by default, shown on mobile */
     background: transparent;
     border: none;
     cursor: pointer;
     padding: 10px;
-    z-index: 1001; /* Ensures toggle is above nav menu when it slides out */
+    z-index: 1001;
 }
-.hamburger-icon { /* The middle bar of the hamburger */
+.hamburger-icon {
     display: block;
     width: 25px;
     height: 3px;
     background-color: var(--text-light);
     position: relative;
-    transition: background-color 0s 0.3s; /* Delays hiding of middle bar during transform */
+    transition: background-color 0s 0.3s;
 }
 .hamburger-icon::before,
-.hamburger-icon::after { /* Top and bottom bars of the hamburger */
+.hamburger-icon::after {
     content: '';
     position: absolute;
     left: 0;
     width: 100%;
     height: 3px;
     background-color: var(--text-light);
-    transition: transform 0.3s ease-in-out, top 0.3s ease-in-out; /* Smooth transformation to 'X' */
+    transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
 }
-.hamburger-icon::before { top: -8px; } /* Position above middle bar */
-.hamburger-icon::after { top: 8px; }  /* Position below middle bar */
+.hamburger-icon::before { top: -8px; }
+.hamburger-icon::after { top: 8px; }
 
-/* Styles for hamburger when mobile menu is open (transformed into 'X') */
 .mobile-nav-toggle[aria-expanded="true"] .hamburger-icon {
-    background-color: transparent; /* Middle bar becomes invisible */
+    background-color: transparent;
 }
 .mobile-nav-toggle[aria-expanded="true"] .hamburger-icon::before {
     transform: rotate(45deg);
-    top: 0; /* Moves to center */
+    top: 0;
 }
 .mobile-nav-toggle[aria-expanded="true"] .hamburger-icon::after {
     transform: rotate(-45deg);
-    top: 0; /* Moves to center */
+    top: 0;
+}
+
+#mobile-menu {
+    display: none;
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    width: 100%;
+    height: calc(100vh - var(--header-height));
+    background-color: rgba(15, 5, 30, 0.98);
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+#mobile-menu.is-active {
+    display: flex;
+}
+#mobile-menu nav ul {
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+}
+#mobile-menu nav ul li {
+    margin: 0;
+    width: 100%;
+}
+#mobile-menu nav ul li a {
+    display: block;
+    padding: 20px 0;
+    font-size: 1.2em;
+    color: var(--text-light);
 }
 
 /* ========================================================================= */
 /* ------------------------ MAIN CONTENT AND HERO SECTION ------------------ */
-/* Styles for the main content wrapper and the prominent hero area.        */
 /* ========================================================================= */
 
 main {
-    flex-grow: 1; /* Allows main content to take up available space (for footer sticking) */
-    padding-top: calc(var(--header-height) + 20px); /* Top padding to avoid overlap with fixed header */
+    flex-grow: 1;
+    padding-top: var(--header-height);
+    position: relative;
+    z-index: 1;
 }
 
 #hero {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: calc(100vh - (var(--header-height) + 20px)); /* Hero section takes almost full viewport height */
+    justify-content: center;
+    min-height: calc(100vh - var(--header-height));
     text-align: center;
     width: 100%;
     position: relative;
-    /* Background image with a semi-transparent color overlay. 'fixed' creates a parallax-like effect. */
-    background: linear-gradient(rgba(15, 5, 25, 0.7), rgba(15, 5, 25, 0.7)), url('img/my-background.png') no-repeat center center fixed;
-    background-size: cover; /* Ensures background image covers the entire area */
-    overflow: hidden; /* Can prevent minor overflow issues with parallax or absolutely positioned children */
-    padding: 40px 20px 20px 20px; /* Padding inside the hero section */
+    overflow: hidden;
+    padding: 40px 20px 20px 20px;
+    background-image: linear-gradient(rgba(12, 3, 20, 0.7), rgba(20, 8, 35, 0.7)), url('img/my-background.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 
-/* Wrapper for the hero text slider content */
 .hero-slider-content-wrapper {
-    position: relative; /* Establishes a positioning context for slides */
+    position: relative;
     width: 100%;
-    max-width: 850px; /* Max width for the text content within the hero */
-    min-height: 48vh; /* Minimum height to ensure content is visible */
+    max-width: 850px;
+    min-height: 48vh;
     display: flex;
-    align-items: center; /* Vertically centers slide content */
-    justify-content: center; /* Horizontally centers slide content */
-    flex-grow: 1; /* Allows wrapper to take available vertical space within hero */
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
 }
 
-/* Individual hero slide text containers */
 .hero-slide-text {
-    position: absolute; /* Allows slides to overlap for transitions */
+    position: absolute;
     top: 50%;
     left: 50%;
-    width: 95%; /* Relative width */
+    width: 95%;
     max-width: 100%;
-    transform: translate(-50%, -50%); /* Centers the slide */
-    opacity: 0; /* Initially hidden */
-    visibility: hidden; /* Initially not visible and not interactive */
-    transition: opacity 0.8s ease-in-out, visibility 0s linear 0.8s; /* Fade transition */
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out, visibility 0s linear 0.8s;
     z-index: 1;
 }
-/* Styles for the currently active hero slide */
 .hero-slide-text.active-slide {
     opacity: 1;
     visibility: visible;
     transition: opacity 0.8s ease-in-out, visibility 0s linear 0s;
-    z-index: 2; /* Ensures active slide is on top */
+    z-index: 2;
 }
 
-/* Inner content wrapper for animations within a slide */
 .hero-slide-inner-content {
-    animation: fadeInHeroContent 0.8s ease-out 0.2s backwards; /* Entry animation for content */
+    animation: fadeInHeroContent 0.8s ease-out 0.2s backwards;
 }
 @keyframes fadeInHeroContent {
-    from { opacity: 0; transform: translateY(15px); } /* Starts slightly down and faded out */
-    to { opacity: 1; transform: translateY(0); }   /* Fades in and moves up */
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
 }
-/* Re-trigger animation when a slide becomes active (handled by JS removing and adding animation) */
 .hero-slide-text.active-slide .hero-slide-inner-content {
-    animation-name: fadeInHeroContent; /* Ensures animation re-runs if class is re-applied */
+    animation-name: fadeInHeroContent;
 }
 
-/* Hero headline styling */
 .hero-slide-inner-content h1 {
     margin-bottom: 15px;
     line-height: 1.15;
 }
 .hero-slide-inner-content h1 .line1 {
-    display: block; /* Puts each line on its own... line */
-    font-size: clamp(1.5em, 3.8vw, 2.2em); /* Responsive font size */
+    display: block;
+    font-size: clamp(1.5em, 3.8vw, 2.2em);
     font-weight: 900;
     color: var(--primary-color);
     text-transform: uppercase;
     letter-spacing: 1px;
-    text-shadow: 0 0 8px var(--primary-color); /* Glow effect */
+    text-shadow: 0 0 8px var(--primary-color);
 }
 .hero-slide-inner-content h1 .line2 {
     display: block;
-    font-size: clamp(1.8em, 4.5vw, 2.8em); /* Responsive font size, larger than line1 */
+    font-size: clamp(1.8em, 4.5vw, 2.8em);
     font-weight: 900;
     color: var(--text-light);
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-top: 3px;
-    text-shadow: 0 0 8px rgba(255,255,255,0.2); /* Subtle white glow */
+    text-shadow: 0 0 8px rgba(255,255,255,0.2);
 }
-/* Hero paragraph styling */
 .hero-slide-inner-content p {
-    font-size: clamp(0.85em, 2vw, 1.0em); /* Responsive font size */
+    font-size: clamp(0.85em, 2vw, 1.0em);
     line-height: 1.5;
-    color: #c0c0c0; /* Slightly lighter gray than default text */
-    text-shadow: 0 0 3px rgba(0,0,0,0.5); /* Subtle dark shadow for readability on image */
+    color: #c0c0c0;
+    text-shadow: 0 0 3px rgba(0,0,0,0.5);
     margin-bottom: 30px;
-    max-width: 600px; /* Constrains width for better readability */
+    max-width: 600px;
     margin-left: auto;
     margin-right: auto;
 }
 .hero-buttons {
     display: flex;
     justify-content: center;
-    gap: 20px; /* Space between buttons */
-    flex-wrap: wrap; /* Allows buttons to wrap on smaller screens */
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
-/* Navigation dots for the hero slider */
 .hero-navigation-dots {
     display: flex;
     justify-content: center;
-    gap: 10px; /* Space between dots */
-    z-index: 3; /* Ensures dots are above slide text content */
-    margin-top: auto; /* Pushes dots to the bottom of the flex container (.hero) */
-    padding-top: 15px; /* Space above dots */
-    padding-bottom: 10px; /* Space below dots */
+    gap: 10px;
+    z-index: 3;
+    padding-top: 15px;
+    padding-bottom: 20px;
 }
 .hero-navigation-dots .dot {
     width: 10px;
     height: 10px;
-    border-radius: 50%; /* Makes it a circle */
-    background-color: rgba(255, 255, 255, 0.4); /* Semi-transparent white */
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    border: none; /* Remove default button border */
-    padding:0; /* Remove default button padding */
+    border: none;
+    padding:0;
 }
 .hero-navigation-dots .dot:hover {
-    background-color: rgba(255, 255, 255, 0.7); /* More opaque on hover */
-    transform: scale(1.2); /* Slight zoom on hover */
+    background-color: rgba(255, 255, 255, 0.7);
+    transform: scale(1.2);
 }
 .hero-navigation-dots .dot.active-dot {
-    background-color: var(--primary-color); /* Uses primary color for active dot */
-    transform: scale(1.3); /* Larger zoom for active dot */
-    box-shadow: 0 0 8px var(--primary-color); /* Glow effect for active dot */
+    background-color: var(--primary-color);
+    transform: scale(1.3);
+    box-shadow: 0 0 8px var(--primary-color);
 }
-
 
 /* ========================================================================= */
 /* --------------------------- GENERAL BUTTON STYLES ----------------------- */
-/* Base styles for buttons, extended by specific button types.             */
 /* ========================================================================= */
 
 .btn {
     padding: 12px 28px;
-    border-radius: 10px; /* Rounded corners */
+    border-radius: 10px;
     text-decoration: none;
     font-weight: 700;
     text-transform: uppercase;
     font-size: 0.85em;
     letter-spacing: 0.7px;
     transition: transform 0.2s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
-    border: 2px solid transparent; /* Transparent border initially, colored by specific button styles */
+    border: 2px solid transparent;
     cursor: pointer;
-    display: inline-block; /* Allows setting width/height/padding */
+    display: inline-block;
 }
 .btn:hover {
-    transform: translateY(-3px) scale(1.02); /* Slight lift and zoom effect on hover */
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
-/* Primary Button Style */
 .btn-primary {
     background-color: var(--primary-color-darker);
     color: var(--text-light);
     border: 2px solid var(--primary-color);
-    /* Multi-layered box shadow for a neon glow effect */
-    box-shadow: 0 0 6px 0px var(--primary-color),
-                0 0 10px 0px rgba(255, 59, 95, 0.7),
-                0 0 18px 0px rgba(255, 59, 95, 0.4);
+    box-shadow: 0 0 8px 0px var(--primary-color),
+                0 0 12px 0px rgba(255, 59, 95, 0.7);
 }
 .btn-primary:hover {
     background-color: var(--primary-color-hover-bg);
     border-color: var(--primary-color-hover-border);
-    /* Enhanced glow on hover */
-    box-shadow: 0 0 8px 0px var(--primary-color-hover-border),
-                0 0 15px 0px rgba(255, 92, 122, 0.8),
-                0 0 25px 0px rgba(255, 92, 122, 0.5);
+    box-shadow: 0 0 12px 0px var(--primary-color-hover-border),
+                0 0 20px 0px rgba(255, 92, 122, 0.8);
 }
 
-/* Secondary Button Style */
 .btn-secondary {
     background-color: var(--secondary-color-darker);
     color: var(--text-light);
     border: 2px solid var(--secondary-color);
-    box-shadow: 0 0 6px 0px var(--secondary-color),
-                0 0 10px 0px rgba(142, 45, 226, 0.7),
-                0 0 18px 0px rgba(142, 45, 226, 0.4);
+    box-shadow: 0 0 8px 0px var(--secondary-color),
+                0 0 12px 0px rgba(142, 45, 226, 0.7);
 }
 .btn-secondary:hover {
     background-color: var(--secondary-color-hover-bg);
     border-color: var(--secondary-color-hover-border);
-    box-shadow: 0 0 8px 0px var(--secondary-color-hover-border),
-                0 0 15px 0px rgba(164, 80, 237, 0.8),
-                0 0 25px 0px rgba(164, 80, 237, 0.5);
+    box-shadow: 0 0 12px 0px var(--secondary-color-hover-border),
+                0 0 20px 0px rgba(164, 80, 237, 0.8);
 }
 
-/* Tertiary Button Style (Outline/Ghost button) */
 .btn-tertiary {
     background-color: transparent;
     color: var(--primary-color);
     border: 2px solid var(--primary-color);
-    box-shadow: 0 0 6px 0px rgba(255, 59, 95, 0.2); /* Subtle glow */
+    box-shadow: 0 0 6px 0px rgba(255, 59, 95, 0.2);
 }
 .btn-tertiary:hover {
-    background-color: rgba(255, 59, 95, 0.1); /* Light primary color fill on hover */
-    color: var(--text-light); /* Text color changes on hover for better contrast */
-    border-color: #ff5074; /* Slightly lighter primary color for border */
-    box-shadow: 0 0 12px 1px rgba(255, 59, 95, 0.4); /* Enhanced glow */
+    background-color: rgba(255, 59, 95, 0.1);
+    color: var(--text-light);
+    border-color: #ff5074;
+    box-shadow: 0 0 12px 1px rgba(255, 59, 95, 0.4);
 }
 
 /* ========================================================================= */
 /* ------------------------- CONTENT SECTION STYLING ----------------------- */
-/* General styles for repeatable content sections (philosophy, benefits etc). */
 /* ========================================================================= */
 
 .content-section {
-    padding: 70px 0; /* Vertical padding */
-    background-color: var(--bg-dark-primary); /* Default background for sections */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Subtle separator */
-}
-/* Alternate background color for even-numbered sections */
-.content-section:nth-child(even) {
-    background-color: var(--bg-dark-secondary);
+    padding: 70px 0;
+    background-color: transparent;
+    position: relative;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
-/* Section Titles (H2) */
 .content-section h2 {
     text-align: center;
     color: var(--primary-color);
     margin-bottom: 15px;
-    font-size: clamp(1.8em, 5vw, 2.5em); /* Responsive font size */
+    font-size: clamp(1.8em, 5vw, 2.5em);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    text-shadow: 0 0 8px rgba(255, 59, 95, 0.4); /* Glow effect for title */
+    text-shadow: 0 0 8px rgba(255, 59, 95, 0.4);
 }
-/* Icon within section titles */
 .content-section .icon img {
-    vertical-align: middle; /* Aligns icon nicely with text */
-    margin-right: 10px; /* Space between icon and text */
-   /* filter: drop-shadow(0 0 5px var(--primary-color));  Glow for icon */
+    vertical-align: middle;
+    margin-right: 10px;
+    width: 60px;
+    height: 60px;
 }
-/* Section Subtitles */
 .content-section .section-subtitle {
     text-align: center;
-    color: #b0b0b0; /* Lighter gray */
-    margin-bottom: 40px; /* Adjusted margin */
-    font-size: clamp(1em, 3vw, 1.15em); /* Responsive font size */
-    max-width: 700px; /* Constrains width for readability */
+    color: #b0b0b0;
+    margin-bottom: 40px;
+    font-size: clamp(1em, 3vw, 1.15em);
+    max-width: 700px;
     margin-left: auto;
     margin-right: auto;
 }
 
-/* Styles for elements animated on scroll */
 .animate-on-scroll {
-    opacity: 0; /* Initially hidden */
-    transform: translateY(30px); /* Initially moved down */
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth fade-in and move-up animation */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
-.animate-on-scroll.is-visible { /* Class added by JS when element is in viewport */
+.animate-on-scroll.is-visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Philosophy Section Text Styling */
+/* --- Philosophy Section --- */
 .philosophy-content {
-    color: #c0c0c0; /* Slightly lighter than default body text for emphasis */
+    color: #c0c0c0;
 }
-
 .philosophy-content p {
-    margin-bottom: 25px; /* Consistent spacing between paragraphs */
-    line-height: 1.7; /* Slightly increased line height for readability */
+    margin-bottom: 25px;
+    line-height: 1.7;
 }
-
-/* Centering for specific philosophy paragraphs */
 .philosophy-content > p:first-of-type,
-.philosophy-content > p:nth-of-type(2) { /* First and second paragraph */
+.philosophy-content > p:nth-of-type(2) {
     text-align: center;
-    max-width: 800px; /* Ensure centered text isn't too wide */
+    max-width: 800px;
     margin-left: auto;
     margin-right: auto;
 }
 .philosophy-content > p:nth-of-type(2) {
-    margin-bottom: 40px; /* More space before pillars */
+    margin-bottom: 40px;
 }
-
-/* Styling for the concluding philosophy paragraph */
 .philosophy-content > p:last-of-type {
     text-align: center;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
-    color: #b0b0b0;
-    font-weight: 600; /* Subtitle-like weight */
-    font-size: clamp(1.05em, 3.2vw, 1.2em); /* Slightly larger */
+    color: #d0d0d0;
+    font-weight: 600;
+    font-size: clamp(1.05em, 3.2vw, 1.2em);
     line-height: 1.65; 
-    margin-top: 40px; /* Space above */
-    text-shadow: 0 0 6px rgba(142, 45, 226, 0.35); /* Subtle purple glow */
+    margin-top: 40px;
+    text-shadow: 0 0 6px rgba(142, 45, 226, 0.35);
 }
 
-
-/* Specific layout for 'Pilares' (Pillars) section */
 .pilares-grid {
     display: grid;
-    /* Creates responsive columns: they fit if min 280px, else wrap */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px; /* Space between grid items */
-    margin: 40px 0; /* Vertical margin */
+    gap: 30px;
+    margin: 40px 0;
 }
 .pilar-card {
     background-color: var(--card-bg);
     padding: 25px;
     border-radius: 10px;
-    border-left: 4px solid var(--secondary-color); /* Accent border on the left */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2), 0 0 10px rgba(142, 45, 226, 0.1) inset; /* Outer and inner shadow */
+    border-left: 4px solid var(--secondary-color);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2), 0 0 10px rgba(142, 45, 226, 0.1) inset;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .pilar-card:hover {
-    transform: translateY(-5px); /* Lift effect on hover */
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 15px rgba(142, 45, 226, 0.2) inset; /* Enhanced shadow on hover */
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 15px rgba(142, 45, 226, 0.2) inset;
 }
 .pilar-card h4 {
     color: var(--secondary-color);
@@ -548,7 +539,7 @@ main {
     color: #b0b0b0;
 }
 
-/* Specific layout for 'Benefits' section */
+/* --- Benefits Section --- */
 .benefits-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -559,20 +550,22 @@ main {
     padding: 20px;
     background-color: var(--card-bg);
     border-radius: 10px;
-    border-top: 3px solid var(--primary-color); /* Accent border on top */
+    border-top: 3px solid var(--primary-color);
     transition: transform 0.3s ease;
 }
 .benefit-item:hover {
-    transform: scale(1.03); /* Slight zoom effect on hover */
+    transform: scale(1.03);
 }
 .benefit-icon {
-    font-size: 2.5em; /* For emoji icons */
     margin-bottom: 15px;
-    color: var(--primary-color);
-    text-shadow: 0 0 8px var(--primary-color); /* Glow for emoji */
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.benefit-icon img { /* For image icons */
-    /*filter: drop-shadow(0 0 5px var(--primary-color));  Glow for image icon */
+.benefit-icon img {
+    max-height: 100%;
+    width: auto;
 }
 .benefit-item h3 {
     color: var(--text-light);
@@ -580,14 +573,14 @@ main {
     font-size: 1.25em;
 }
 
-/* Styles for embedded video */
+/* --- Video Section --- */
 .video-wrapper {
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio (9 / 16 * 100) */
-    height: 0; /* Required for aspect ratio padding trick */
+    padding-bottom: 56.25%;
+    height: 0;
     overflow: hidden;
-    max-width: 800px; /* Max width for the video player */
-    margin: 0 auto 30px auto; /* Center and add bottom margin */
+    max-width: 800px;
+    margin: 0 auto 30px auto;
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
@@ -597,14 +590,15 @@ main {
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 10px; /* Match wrapper's border radius if video element itself is rounded */
+    border-radius: 10px;
+    object-fit: cover;
 }
-.video-cta { /* Call to action below the video */
+.video-cta {
     text-align: center;
     margin-top: 30px;
 }
 
-/* Styles for 'Programs' section cards */
+/* --- Programs Section --- */
 .program-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -613,28 +607,28 @@ main {
 .program-card {
     background-color: var(--card-bg);
     border-radius: 10px;
-    overflow: hidden; /* Clips child elements (like image) to the rounded corners */
+    overflow: hidden;
     box-shadow: 0 5px 20px rgba(0,0,0,0.25);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex; /* Flex layout to manage content distribution */
-    flex-direction: column; /* Stacks image and content vertically */
+    display: flex;
+    flex-direction: column;
 }
 .program-card:hover {
-    transform: translateY(-8px); /* Larger lift effect on hover */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.35), 0 0 15px var(--primary-color); /* Enhanced shadow and primary color glow */
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35), 0 0 15px var(--primary-color);
 }
 .program-card img {
     width: 100%;
-    height: 200px; /* Fixed height for program images */
-    object-fit: cover; /* Ensures image covers the area, may crop */
-    border-bottom: 3px solid var(--primary-color); /* Accent border below image */
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 3px solid var(--primary-color);
 }
 .program-card-content {
     padding: 20px;
-    flex-grow: 1; /* Allows content to take available space, pushing button down if needed */
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Pushes title/text up and button down */
+    justify-content: space-between;
 }
 .program-card-content h3 {
     color: var(--primary-color);
@@ -644,155 +638,309 @@ main {
 .program-card-content p {
     margin-bottom: 20px;
     font-size: 0.95em;
-    flex-grow: 1; /* Allows paragraph to expand, useful if titles vary in length */
+    flex-grow: 1;
 }
 .program-card-content .btn {
-    align-self: flex-start; /* Aligns button to the start (left) of the flex container */
+    align-self: flex-start;
 }
 
-/* Styles for 'Schedule' section image and CTA */
-.schedule-image {
-    display: block; /* Removes extra space below image */
-    max-width: 100%;
-    height: auto; /* Maintains aspect ratio */
-    margin: 0 auto 40px auto; /* Centers and adds bottom margin */
+/* --- Schedule Section --- */
+.schedule-table-wrapper {
+    overflow-x: auto;
+    padding: 5px;
+    background-color: rgba(0,0,0,0.2);
     border-radius: 10px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    box-shadow: 0 0 20px -5px var(--primary-color);
+    margin: 0 auto 40px auto;
 }
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px;
+    color: #f0f0f0;
+    font-weight: 500;
+}
+.schedule-table th, .schedule-table td {
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 12px;
+    text-align: center;
+    vertical-align: middle;
+}
+.schedule-table thead th {
+    background-color: rgba(255,59,95,0.2);
+    color: var(--primary-color);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.1em;
+    text-shadow: 0 0 5px var(--primary-color);
+}
+.schedule-table tbody .time-slot {
+    font-weight: 700;
+    color: var(--secondary-color);
+    text-shadow: 0 0 5px var(--secondary-color);
+    background-color: rgba(142,45,226,0.1);
+}
+.schedule-table tbody td {
+    transition: background-color 0.3s ease;
+    height: 60px;
+}
+.schedule-table tbody td:not(.time-slot):hover {
+    background-color: rgba(255,255,255,0.1);
+}
+.class-bjj, .class-kids, .class-nogi, .class-open-mat, .class-beginner, .class-juvenil {
+    font-weight: 700;
+    cursor: default;
+}
+.class-bjj {
+    background-color: rgba(255, 59, 95, 0.25);
+    color: #ffc4cf;
+    text-shadow: 0 0 5px #FF3B5F;
+}
+.class-nogi {
+    background-color: rgba(74, 0, 224, 0.25);
+    color: #d1c1ff;
+    text-shadow: 0 0 5px #4A00E0;
+}
+.class-open-mat {
+    background: linear-gradient(45deg, rgba(255, 59, 95, 0.3), rgba(142, 45, 226, 0.3));
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #fff;
+}
+.class-kids {
+    background-color: rgba(255, 165, 0, 0.2);
+    color: #ffdcb2;
+    text-shadow: 0 0 5px orange;
+}
+.class-kids small, .class-juvenil small, .class-beginner small, .class-bjj small, .class-nogi small {
+    display: block;
+    font-size: 0.8em;
+    font-weight: 500;
+    opacity: 0.8;
+}
+.class-juvenil {
+    background-color: rgba(0, 191, 255, 0.2);
+    color: #b3ecff;
+    text-shadow: 0 0 5px deepskyblue;
+}
+.class-beginner {
+    background-color: rgba(60, 179, 113, 0.2);
+    color: #b2f0d1;
+    text-shadow: 0 0 5px mediumseagreen;
+}
+
 .schedule-cta {
     text-align: center;
     background-color: var(--card-bg);
     padding: 30px;
     border-radius: 10px;
-    margin-top: 30px; /* Space above CTA if image is short */
-    border-top: 3px solid var(--secondary-color); /* Accent border */
+    margin-top: 30px;
+    border-top: 3px solid var(--secondary-color);
 }
 .schedule-cta h3 {
     color: var(--secondary-color);
     font-size: 1.5em;
     margin-bottom: 15px;
 }
-
-/* MODIFICATION: Add margin-top to the button within the schedule CTA */
 .schedule-cta .btn {
-    margin-top: 25px; /* Increased space above the button */
+    margin-top: 25px;
 }
 
-/* Styles for 'Instructor' section */
+/* --- Instructor Section --- */
 .instructor-content {
     display: flex;
-    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
-    align-items: center; /* Vertically aligns image and bio */
-    gap: 40px; /* Space between image and bio */
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 40px;
     background-color: var(--card-bg);
     padding: 30px;
     border-radius: 10px;
 }
-
 .instructor-image {
-    width: clamp(180px, 25vw, 280px); /* Responsive width: min 180px, ideal 25% viewport, max 280px */
-    aspect-ratio: 1 / 1; /* Maintain a square shape, which becomes a circle with border-radius */
-    border-radius: 50%;  /* Makes the container circular */
-    overflow: hidden;    /* Clips the image inside to the circular shape */
-    margin: 0 auto 20px auto; /* Centering for responsive stacking */
-    border: 5px solid var(--secondary-color); /* Accent border on the circular frame */
-    box-shadow: 0 0 20px rgba(142, 45, 226, 0.4); /* Glow effect on the frame */
+    width: clamp(180px, 25vw, 280px);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 20px auto;
+    border: 5px solid var(--secondary-color);
+    box-shadow: 0 0 20px rgba(142, 45, 226, 0.4);
     position: relative; 
 }
-
 .instructor-image img {
     width: 100%;
-    height: 100%; /* Image fills the circular container */
-    object-fit: cover; /* Scales image to maintain aspect ratio while filling the container; crops excess */
-    display: block; /* Removes any potential extra space below the image */
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
-
 .instructor-bio {
-    flex: 2 1 400px; /* Bio takes more space if available */
+    flex: 2 1 400px;
 }
 .instructor-bio h3 {
     color: var(--secondary-color);
     font-size: 1.8em;
-    margin-bottom: 20px; /* Increased margin */
-    text-align: center; /* Center instructor name */
+    margin-bottom: 5px;
+}
+.instructor-bio .instructor-subtitle {
+    font-size: 1.1em;
+    color: var(--primary-color);
+    text-shadow: 0 0 5px var(--primary-color);
+    margin-bottom: 20px;
+    font-weight: 600;
 }
 .instructor-bio p {
     color: #c0c0c0;
     margin-bottom: 15px;
     line-height: 1.7;
-     /* text-align: justify; /* Optional: for a blockier look, but can create uneven spacing */
 }
 .instructor-bio p:last-child {
     margin-bottom: 0;
 }
+.instructor-bio p strong {
+    color: var(--text-light);
+    font-weight: 700;
+}
 
-
-/* Styles for 'Testimonials' section auto-scroller */
+/* --- Testimonials Section --- */
 .testimonial-scroll-wrapper {
-    max-height: 300px; /* Fixed height for the scrollable area */
-    overflow-y: hidden; /* Hides the native scrollbar, JS handles scrolling */
-    position: relative; /* For potential future absolutely positioned controls if any */
+    max-height: 300px;
+    overflow-y: hidden;
+    position: relative;
     border: 1px solid rgba(255,255,255,0.1);
     padding: 10px;
     border-radius: 8px;
-    background-color: rgba(0,0,0,0.1); /* Slightly darker background for the wrapper */
+    background-color: rgba(0,0,0,0.1);
 }
 .testimonial-item {
     padding: 20px;
-    margin-bottom: 15px; /* Space between testimonials */
-    background-color: rgba(255,255,255,0.03); /* Very subtle background for items */
+    margin-bottom: 15px;
+    background-color: rgba(255,255,255,0.03);
     border-radius: 5px;
-    border-left: 3px solid var(--secondary-color); /* Accent border */
+    border-left: 3px solid var(--secondary-color);
 }
-.testimonial-item p { /* The testimonial quote itself */
+.testimonial-item p {
     font-style: italic;
     margin-bottom: 10px;
     color: #d0d0d0;
 }
-.testimonial-item cite { /* The person who gave the testimonial */
+.testimonial-item cite {
     display: block;
     text-align: right;
     font-weight: bold;
     color: var(--secondary-color);
 }
 
-/* Styles for 'Contact' section */
-/* Decorative logo in H2 for contact section */
+/* --- Blog Section --- */        
+#blog .program-card {
+    cursor: pointer;
+}
+#blog .program-card-content h3 {
+    color: var(--secondary-color);
+}
+#blog .program-card:hover {
+     box-shadow: 0 10px 30px rgba(0,0,0,0.35), 0 0 15px var(--secondary-color);
+}
+
+.blog-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+}
+.blog-modal-content {
+    background: linear-gradient(to bottom, #1c0a2e, #120314);
+    margin: 5% auto;
+    padding: 30px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    width: 90%;
+    max-width: 800px;
+    position: relative;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+    animation: slideInModal 0.5s ease-out;
+}
+@keyframes slideInModal {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+.blog-modal-close {
+    color: #aaa;
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+.blog-modal-close:hover,
+.blog-modal-close:focus {
+    color: var(--primary-color);
+    text-decoration: none;
+    cursor: pointer;
+}
+#modal-blog-title {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+#modal-blog-body p {
+    margin-bottom: 15px;
+    line-height: 1.8;
+    color: #d0d0d0;
+}
+#modal-blog-body h4 {
+    color: var(--secondary-color);
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+/* --- Contact Section --- */
 #contact h2 .h2-logo {
     width: 35px;
     height: auto;
     vertical-align: middle;
-    margin: 0 10px; /* Space around the logo */
+    margin: 0 10px;
     filter: drop-shadow(0 0 8px var(--primary-color));
 }
-
-/* NEW: Styles for Student Group Photo in Contact Section */
 .student-group-photo-container {
-    text-align: center; /* Center the image */
-    margin-top: 30px; /* Space above the image container */
-    margin-bottom: 50px; /* Space below image, before contact form/info */
-    padding: 0 15px; /* Add some horizontal padding for very wide images on small screens */
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    padding: 0 15px;
 }
 .student-group-photo {
     max-width: 100%;
     height: auto;
     border-radius: 10px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-    border: 5px solid var(--secondary-color-darker); /* Optional: adds a subtle border */
+    border: 5px solid var(--secondary-color-darker);
 }
 
 .contact-flex-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 40px; /* Space between info and form columns */
+    gap: 40px;
     margin-top: 30px;
 }
 .contact-info,
 .contact-form-container {
-    flex: 1 1 400px; /* Allows columns to grow and shrink responsively */
+    flex: 1 1 400px;
     background-color: var(--card-bg);
     padding: 25px;
     border-radius: 10px;
+}
+.contact-info h3,
+.contact-form-container h3 {
+    color: var(--text-light);
+    margin-bottom: 20px;
+    text-align: left;
+    font-size: 1.4em;
+    color: var(--primary-color);
 }
 .contact-info p {
     margin-bottom: 12px;
@@ -803,7 +951,7 @@ main {
     transition: color 0.3s ease;
 }
 .contact-info a:hover {
-    color: #ff5074; /* Lighter primary color on hover */
+    color: #ff5074;
 }
 .social-links { 
     margin-top: 15px !important;
@@ -811,29 +959,24 @@ main {
 .social-icon {
     width: 35px;
     height: 35px;
-    margin-right: 15px; /* Space between social icons */
+    margin-right: 15px;
     opacity: 0.8;
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 .social-icon:hover {
     opacity: 1;
-    transform: scale(1.1); /* Slight zoom on hover */
+    transform: scale(1.1);
 }
 .map-container {
-    margin-top: 25px; /* Space above the map */
+    margin-top: 25px;
 }
 
-/* Contact Form specific styles */
-.contact-form-container h3 {
-    color: var(--text-light);
-    margin-bottom: 20px;
-    text-align: center;
-}
+/* --- Contact Form --- */
 .form-group {
-    margin-bottom: 20px; /* Space between form fields */
+    margin-bottom: 20px;
 }
 .form-group label {
-    display: block; /* Puts label on its own line */
+    display: block;
     margin-bottom: 8px;
     font-weight: 500;
     color: #ccc;
@@ -844,236 +987,172 @@ main {
     width: 100%;
     padding: 12px;
     border-radius: 6px;
-    border: 1px solid rgba(255,255,255,0.2); /* Subtle border */
-    background-color: rgba(255,255,255,0.05); /* Very subtle background fill */
+    border: 1px solid rgba(255,255,255,0.2);
+    background-color: rgba(255,255,255,0.05);
     color: var(--text-light);
-    font-family: 'Montserrat', sans-serif; /* Inherit body font */
+    font-family: 'Montserrat', sans-serif;
     font-size: 1em;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 .form-group input[type="text"]::placeholder,
 .form-group input[type="email"]::placeholder,
 .form-group textarea::placeholder {
-    color: rgba(255,255,255,0.4); /* Lighter color for placeholder text */
+    color: rgba(255,255,255,0.4);
 }
 .form-group input[type="text"]:focus,
 .form-group input[type="email"]:focus,
 .form-group textarea:focus {
-    outline: none; /* Remove default browser outline */
-    border-color: var(--primary-color); /* Highlight with primary color on focus */
-    box-shadow: 0 0 8px rgba(255, 59, 95, 0.3); /* Glow effect on focus */
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 8px rgba(255, 59, 95, 0.3);
 }
 .form-group textarea {
-    min-height: 120px; /* Minimum height for textarea */
-    resize: vertical; /* Allow vertical resizing only */
+    min-height: 120px;
+    resize: vertical;
 }
 
-/* Styles for form validation messages (JS controlled) */
-.error-message { /* Inline error message for individual fields */
-    display: none; /* Hidden by default */
-    color: #ff6b6b; /* Bright red for errors */
+.error-message {
+    display: none;
+    color: #ff6b6b;
     font-size: 0.85em;
     margin-top: 5px;
 }
 input.error,
-textarea.error { /* Style for input fields with validation errors */
-    border-color: #ff6b6b !important; /* Force error border color */
+textarea.error {
+    border-color: #ff6b6b !important;
 }
-#formStatus { /* Overall form submission status message */
+#formStatus {
     margin-top: 15px;
     padding: 10px;
     border-radius: 5px;
     text-align: center;
     font-weight: 500;
-    display: none; /* Hidden by default */
+    display: none;
 }
 #formStatus.success {
-    background-color: rgba(46, 204, 113, 0.2); /* Greenish for success */
+    background-color: rgba(46, 204, 113, 0.2);
     color: #2ecc71;
     border: 1px solid #2ecc71;
 }
 #formStatus.error {
-    background-color: rgba(231, 76, 60, 0.2); /* Reddish for error */
+    background-color: rgba(231, 76, 60, 0.2);
     color: #e74c3c;
     border: 1px solid #e74c3c;
 }
 #formStatus.info {
-    background-color: rgba(52, 152, 219, 0.2); /* Bluish for info/pending */
+    background-color: rgba(52, 152, 219, 0.2);
     color: #3498db;
     border: 1px solid #3498db;
 }
 
-
 /* ========================================================================= */
 /* --------------------------------- FOOTER -------------------------------- */
-/* Styles for the site footer.                                             */
 /* ========================================================================= */
 
 footer {
     text-align: center;
     padding: 30px 0;
-    background-color: rgba(5, 0, 10, 0.85); /* Dark background for footer */
-    color: #aaa; /* Lighter gray text */
+    background-color: rgba(5, 0, 10, 0.85);
+    color: #aaa;
     font-size: 0.9em;
-    border-top: 1px solid rgba(255, 255, 255, 0.08); /* Subtle top border */
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* ========================================================================= */
 /* ------------------------ FLOATING ACTION BUTTONS ------------------------ */
-/* Styles for fixed position buttons like WhatsApp and Back to Top.        */
 /* ========================================================================= */
 
-/* Floating WhatsApp Button */
 .whatsapp-float {
     position: fixed;
     width: 55px;
     height: 55px;
     bottom: 25px;
     right: 25px;
-    background-color: #25D366; /* WhatsApp green */
+    background-color: #25D366;
     color: #FFF;
-    border-radius: 50px; /* Circular button */
+    border-radius: 50px;
     text-align: center;
-    font-size: 30px; /* Icon size (if using font icon) */
+    font-size: 30px;
     box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-    z-index: 100; /* Ensures it's above most content but below modals/header if needed */
-    display: flex; /* For centering the icon image */
+    z-index: 100;
+    display: flex;
     justify-content: center;
     align-items: center;
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
-.whatsapp-float img { /* Icon image inside the button */
+.whatsapp-float img {
     width: 30px;
     height: 30px;
 }
 .whatsapp-float:hover {
-    transform: scale(1.1); /* Zoom on hover */
-    background-color: #1EBE57; /* Slightly darker green on hover */
+    transform: scale(1.1);
+    background-color: #1EBE57;
 }
 
-/* Back to Top Button */
 #backToTopBtn {
-    display: none; /* Initially hidden, shown by JS on scroll */
+    display: none;
     position: fixed;
-    bottom: 90px; /* Positioned above the WhatsApp button */
+    bottom: 90px;
     right: 30px;
-    z-index: 99; /* Below WhatsApp button if they overlap, above general content */
+    z-index: 99;
     border: none;
     outline: none;
     background-color: var(--secondary-color);
     color: white;
     cursor: pointer;
-    padding: 0; /* Remove default padding */
-    border-radius: 50%; /* Circular button */
+    padding: 0;
+    border-radius: 50%;
     width: 45px;
     height: 45px;
-    font-size: 20px; /* Arrow icon size */
+    font-size: 20px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     transition: background-color 0.3s ease, opacity 0.3s ease;
-    opacity: 0.8; /* Slightly transparent by default */
+    opacity: 0.8;
 }
 #backToTopBtn:hover {
     background-color: var(--tertiary-color);
-    opacity: 1; /* Fully opaque on hover */
+    opacity: 1;
 }
 
 /* ========================================================================= */
 /* ---------------------------- RESPONSIVE DESIGN -------------------------- */
-/* Media queries to adjust styles for different screen sizes.              */
 /* ========================================================================= */
 
-/* Medium screens (e.g., tablets, smaller desktops) */
-@media (max-width: 992px) {
-    /* Adjust header height variable for smaller screens */
-    :root {
-        --header-height: 60px;
-    }
-    .header-container {
-        height: var(--header-height);
-    }
-
-    /* Mobile Navigation Styles */
-    header nav { /* This is the mobile navigation menu container */
-        display: none; /* Hidden by default, shown by JS */
-        position: absolute;
-        top: var(--header-height); /* Position below the header */
-        left: 0;
-        width: 100%;
-        background-color: rgba(15, 5, 30, 0.98); /* Dark, nearly opaque background */
-        flex-direction: column;
-        align-items: center;
-        padding: 20px 0;
-        border-top: 1px solid rgba(255,255,255,0.1);
-        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-    }
-    header nav.is-active { /* Class added by JS to show the mobile menu */
+@media (min-width: 768px) {
+    header nav {
         display: flex;
     }
-    header nav ul { /* Stack navigation items vertically */
-        flex-direction: column;
-        width: 100%;
-        text-align: center;
-    }
-    header nav ul li {
-        margin: 0; /* Remove horizontal margin */
-        width: 100%;
-    }
-    header nav ul li a {
-        display: block; /* Make links take full width for easier tapping */
-        padding: 15px 0; /* Larger padding for tap targets */
-        font-size: 1.1em;
-        border-bottom: 1px solid rgba(255,255,255,0.05); /* Separator lines */
-    }
-    header nav ul li:last-child a {
-        border-bottom: none; /* Remove border from last item */
-    }
-    header nav ul li a::after { /* Hide desktop underline effect on mobile */
-        display: none;
-    }
-    .mobile-nav-toggle { /* Show the hamburger icon */
+}
+
+@media (max-width: 767px) {
+    .mobile-nav-toggle {
         display: block;
     }
 
-    /* Adjust main content padding for new header height */
+    .header-container {
+        height: var(--header-height);
+    }
     main {
-        padding-top: calc(var(--header-height) + 10px);
+        padding-top: var(--header-height);
     }
-    /* Adjust hero section min-height and padding */
     #hero {
-        min-height: calc(100vh - (var(--header-height) + 10px));
-        padding: 30px 15px 15px 15px;
+        min-height: calc(100vh - var(--header-height));
     }
-    .hero-slider-content-wrapper {
-        min-height: 50vh; /* Adjust hero slider content height */
-    }
-    .hero-slide-inner-content h1 .line1 { font-size: clamp(1.4em, 3.5vw, 2em); }
-    .hero-slide-inner-content h1 .line2 { font-size: clamp(1.8em, 4.5vw, 2.6em); }
-    .hero-slide-inner-content p { font-size: clamp(0.8em, 1.8vw, 0.95em); }
-    .hero-navigation-dots { margin-top: 10px; padding-top:10px; padding-bottom: 5px;}
 
-
-    /* Adjust layout for specific sections */
-    .instructor-content { /* Stack instructor image and bio */
+    .instructor-content {
         flex-direction: column;
-         /* text-align: center; Keep default (left) for bio, h3 is already centered */
     }
-    .instructor-image {
-        /* width: clamp(180px, 30vw, 250px); /* Slightly smaller max for medium screens */
-        margin: 0 auto 30px auto; /* More bottom margin when stacked */
-    }
-    .instructor-bio h3 {
-        text-align: center; /* Ensure instructor name is centered on medium screens too */
-    }
-     .instructor-bio p { /* On medium screens, when stacked, center bio text */
+    .instructor-bio h3, .instructor-bio .instructor-subtitle {
         text-align: center;
-        max-width: 500px; /* Constrain width for better readability */
+    }
+    .instructor-bio p {
+        text-align: center;
+        max-width: 500px;
         margin-left: auto;
         margin-right: auto;
     }
-
 }
 
-/* Small screens (e.g., mobile phones) */
 @media (max-width: 600px) {
     .content-section .section-subtitle {
         margin-bottom: 30px;
@@ -1081,22 +1160,20 @@ footer {
     .philosophy-content > p:first-of-type,
     .philosophy-content > p:nth-of-type(2),
     .philosophy-content > p:last-of-type {
-        padding: 0 10px; /* Add some horizontal padding for very narrow screens */
+        padding: 0 10px;
     }
     .philosophy-content > p:nth-of-type(2) {
         margin-bottom: 30px;
     }
     .philosophy-content > p:last-of-type {
-        font-size: clamp(1em, 3.5vw, 1.15em); /* Adjust size for smaller screens */
+        font-size: clamp(1em, 3.5vw, 1.15em);
     }
 
-
-    /* Hero Section Adjustments */
     #hero {
-        padding: 20px 10px 10px 10px; /* Further reduce padding */
+        padding: 20px 10px 10px 10px;
     }
     .hero-slide-inner-content h1 .line1 {
-        font-size: 1.3em; /* Smaller font size for headlines */
+        font-size: 1.3em;
         letter-spacing: 0.5px;
     }
     .hero-slide-inner-content h1 .line2 {
@@ -1109,29 +1186,27 @@ footer {
         line-height: 1.4;
     }
     .hero-slider-content-wrapper {
-        min-height: 55vh; /* May need more vertical space for content on small screens */
+        min-height: 55vh;
     }
     .hero-navigation-dots {
-      margin-top: auto; /* Ensure dots are at the bottom within the hero content area */
+      margin-top: auto;
       padding-top: 10px;
       padding-bottom: 5px;
     }
 
-    /* Hero Buttons: stack vertically */
     .hero-buttons {
         flex-direction: column;
-        align-items: center; /* Center buttons when stacked */
+        align-items: center;
         gap: 12px;
     }
-    .btn { /* Make buttons take more width on small screens */
+    .btn {
         width: 80%;
         max-width: 260px;
         text-align: center;
-        padding: 12px 15px; /* Adjust padding */
-        font-size: 0.75em; /* Smaller font size for buttons */
+        padding: 12px 15px;
+        font-size: 0.75em;
     }
 
-    /* Content Section Titles */
     .content-section h2 {
         font-size: 1.6em;
     }
@@ -1139,31 +1214,27 @@ footer {
         font-size: 0.9em;
     }
 
-    /* Grid Layouts: stack to single column */
     .pilares-grid,
     .benefits-grid,
     .program-cards {
-        grid-template-columns: 1fr; /* Single column layout */
+        grid-template-columns: 1fr;
     }
     
     .instructor-image {
-        width: clamp(150px, 40vw, 200px); /* Adjust for smaller screens */
+        width: clamp(150px, 40vw, 200px);
     }
 
-    /* Contact Section Flex Layout */
     .contact-flex-container {
-        gap: 20px; /* Reduce gap */
+        gap: 20px;
     }
     .contact-info,
     .contact-form-container {
-        padding: 15px; /* Reduce padding */
+        padding: 15px;
     }
     .student-group-photo-container {
         margin-bottom: 30px;
     }
 
-
-    /* Floating Action Buttons: adjust size and position */
     .whatsapp-float {
         width: 50px;
         height: 50px;
@@ -1175,7 +1246,7 @@ footer {
         height: 25px;
     }
     #backToTopBtn {
-        bottom: 80px; /* Adjust to stay above WhatsApp button */
+        bottom: 80px;
         right: 22px;
         width: 40px;
         height: 40px;

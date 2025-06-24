@@ -1,435 +1,220 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- ========================================================================= -->
-    <!-- --------------------------- META INFORMATION -------------------------- -->
-    <!-- ========================================================================= -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO Meta Tags -->
     <title>Raion BJJ - Academia de Jiu-Jitsu Brasileño | Lo Barnechea</title>
-    <meta name="description" content="Academia de Jiu-Jitsu Brasileño Raion BJJ en Lo Barnechea. Defensa personal real. Únete a nuestra manada. Clases para todas las edades.">
+    <meta name="description" content="Academia especialista en Jiu-Jitsu Brasileño en Lo Barnechea. Clases de BJJ para principiantes, niños y competidores. ¡Reserva tu clase de prueba gratis y únete a nuestra manada!">
 
-    <!-- ========================================================================= -->
-    <!-- -------------------------- STYLES AND FONTS --------------------------- -->
-    <!-- ========================================================================= -->
-    <!-- Google Fonts: Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet"> <!-- Added 600 weight -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 
-    <!-- Link to external CSS file -->
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    
     <link rel="stylesheet" href="style.css">
 
-    <!-- ========================================================================= -->
-    <!-- -------------------------------- FAVICON ------------------------------ -->
-    <!-- ========================================================================= -->
-    <!-- Favicon for the website (displayed in browser tabs) -->
-    <link rel="icon" href="img/favicon.png" type="image/png">
-
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsActivityLocation",
+      "name": "Raion BJJ",
+      "description": "Academia especialista en Jiu-Jitsu Brasileño en Lo Barnechea, Santiago. Ofrecemos clases para todas las edades y niveles.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. El Rodeo #12850 (Dentro de W FITNESS LA DEHESA)",
+        "addressLocality": "Lo Barnechea",
+        "addressRegion": "RM",
+        "postalCode": "7690000",
+        "addressCountry": "CL"
+      },
+      "telephone": "+56996787321",
+      "openingHours": "Mo,Tu,We,Th,Fr 11:30-22:00, Sa 10:00-12:00",
+      "image": "img/logored.png",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "-33.3742317",
+        "longitude": "-70.5075178"
+      },
+      "url": "https://www.raionbjj.cl",
+      "priceRange": "$$",
+      "hasOffer": {
+        "@type": "Offer",
+        "description": "Clase de prueba gratis",
+        "price": "0",
+        "priceCurrency": "CLP"
+      }
+    }
+    </script>
 </head>
 <body>
-    <!-- ========================================================================= -->
-    <!-- ---------------------------- HEADER SECTION ----------------------------- -->
-    <!-- Contains logo, navigation menu, and mobile navigation toggle.           -->
-    <!-- ========================================================================= -->
+
+    <div id="particles-js"></div>
+
     <header>
         <div class="container header-container">
-            <!-- Logo Area: Contains the image logo and text (if any) -->
             <div class="logo-area">
                 <a href="#hero" title="Raion BJJ - Inicio">
                     <img src="img/logored.png" alt="Raion BJJ Logo" class="logo-img">
                 </a>
-                <span class="logo-text"></span> <!-- Potentially for a text logo or tagline next to the image -->
             </div>
-
-            <!-- Desktop Navigation Menu -->
-            <nav>
-                <ul>
-                    <li><a href="#hero" class="nav-link active-nav">Inicio</a></li>
-                    <li><a href="#philosophy" class="nav-link">Filosofía</a></li>
-                    <li><a href="#benefits" class="nav-link">Beneficios</a></li>
-                    <li><a href="#programs" class="nav-link">Programas</a></li>
-                    <li><a href="#instructors" class="nav-link">Instructor</a></li>
-                    <li><a href="#contact" class="nav-link">Contacto</a></li>
-                </ul>
-            </nav>
-
-            <!-- Mobile Navigation Toggle Button (Hamburger Icon) -->
-            <!-- aria-label: Provides an accessible name for screen readers. -->
-            <!-- aria-expanded: Indicates whether the mobile menu is currently open or closed (managed by JS). -->
+            <nav class="desktop-nav">
+                </nav>
             <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
                 <span class="hamburger-icon"></span>
             </button>
         </div>
     </header>
 
-    <!-- ========================================================================= -->
-    <!-- --------------------------- MAIN CONTENT AREA --------------------------- -->
-    <!-- Contains all primary page sections.                                     -->
-    <!-- ========================================================================= -->
+    <div id="mobile-menu">
+        <nav>
+            </nav>
+    </div>
+
     <main>
-        <!-- ===================================================================== -->
-        <!-- ---------------------------- HERO SECTION --------------------------- -->
-        <!-- Main introductory section with a text slider.                       -->
-        <!-- ===================================================================== -->
         <section id="hero">
-            <div class="hero-slider-content-wrapper">
-                <!-- Slide 1 Text Content -->
-                <div class="hero-slide-text active-slide"> <!-- 'active-slide' class controlled by JS -->
-                    <div class="hero-slide-inner-content">
-                        <h1>
-                            <span class="line1">DEFENSA PERSONAL REAL</span>
-                            <span class="line2">ÚNETE A NUESTRA MANADA</span>
-                        </h1>
-                        <p>
-                            Una comunidad donde crecemos, nos apoyamos y superamos juntos.<br>
-                            Aprende técnicas efectivas de defensa personal e incrementar tu confianza.
-                        </p>
-                        <div class="hero-buttons">
-                            <a href="#philosophy" class="btn btn-primary nav-link">NUESTRA FILOSOFÍA</a>
-                            <a href="#programs" class="btn btn-secondary nav-link">VER PROGRAMAS</a>
-                        </div>
-                    </div>
+            <div class="hero-slider-content-wrapper" id="hero-slider-wrapper">
                 </div>
-
-                <!-- Slide 2 Text Content (Example) -->
-                <div class="hero-slide-text">
-                    <div class="hero-slide-inner-content">
-                        <h1>
-                            <span class="line1">FORJA CUERPO Y MENTE</span>
-                            <span class="line2">DESCUBRE TU PODER</span>
-                        </h1>
-                        <p>
-                            El Jiu-Jitsu transforma. Desarrolla disciplina, confianza y una fuerza que no conocías.<br>
-                            Clases para todas las edades y niveles en Lo Barnechea.
-                        </p>
-                        <div class="hero-buttons">
-                            <a href="#contact" class="btn btn-primary nav-link">CLASE GRATIS</a>
-                            <a href="#benefits" class="btn btn-secondary nav-link">BENEFICIOS</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slide 3 Text Content (Example) -->
-                <div class="hero-slide-text">
-                    <div class="hero-slide-inner-content">
-                        <h1>
-                            <span class="line1">AMBIENTE DE RESPETO</span>
-                            <span class="line2">CRECE CON NOSOTROS</span>
-                        </h1>
-                        <p>
-                            En Raion BJJ encontrarás más que un gimnasio: una familia.<br>
-                            Apoyo, motivación y el mejor entrenamiento de Jiu-Jitsu.
-                        </p>
-                        <div class="hero-buttons">
-                            <a href="#instructors" class="btn btn-primary nav-link">INSTRUCTOR</a>
-                            <a href="#testimonials" class="btn btn-secondary nav-link">TESTIMONIOS</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Navigation Dots for Hero Slider (Generated by JavaScript) -->
-            <div class="hero-navigation-dots">
-                <!-- Dots will be dynamically inserted here by script.js -->
-            </div>
+            <div class="hero-navigation-dots"></div>
         </section>
 
-
-        <!-- ===================================================================== -->
-        <!-- -------------------------- PHILOSOPHY SECTION ----------------------- -->
-        <!-- Describes the core values and principles of Raion BJJ.              -->
-        <!-- 'animate-on-scroll' class for JS-driven scroll animations.          -->
-        <!-- ===================================================================== -->
         <section id="philosophy" class="content-section animate-on-scroll">
             <div class="container">
-                <h2>
-                    <span class="icon"><img src="img/icono_leon_sabio.png" width="60" height="60"></span>
-                    Filosofía Raion BJJ
-                </h2>
-                <p class="section-subtitle">Más que una academia. Somos una Manada.</p> <!-- Note: Capitalized "Manada" for emphasis -->
+                <h2 id="philosophy-title"><span class="icon"><img src="img/icono_leon_sabio.png" width="60" height="60" alt="Icono de leon sabio"></span></h2>
+                <p class="section-subtitle" id="philosophy-subtitle"></p>
                 <div class="philosophy-content">
-                    <p>
-                        En Raion BJJ, concebimos el Jiu-Jitsu no solo como un deporte, sino como un sendero de profunda transformación personal. Nuestro nombre, "Raion" – león en japonés – simboliza la fuerza, el liderazgo y el espíritu indomable que cohesiona a nuestra comunidad. Fieles a nuestra esencia, no avanzamos en solitario: somos una manada que se impulsa, se sostiene y evoluciona en conjunto.
-                    </p>
-                    <p>
-                        Nuestra filosofía se erige sobre tres pilares fundamentales:
-                    </p>
-                    <!-- Grid for displaying key pillars -->
-                    <div class="pilares-grid">
-                        <div class="pilar-card">
-                            <h4>🧠 Disciplina y Desarrollo Personal</h4>
-                            <p>
-                                El tatami es nuestro crisol: un reflejo de la vida donde aprendemos a caer con dignidad y a levantarnos con renovada determinación. Cada movimiento esculpe el cuerpo, serena la mente y templa el carácter.
-                            </p>
+                    <p id="philosophy-p1"></p>
+                    <p id="philosophy-p2"></p>
+                    <div class="pilares-grid" id="pillars-grid">
                         </div>
-                        <div class="pilar-card">
-                            <h4>💪 Superación a través del Esfuerzo</h4>
-                            <p>
-                                Principiante o avanzado, en Raion BJJ celebramos tu entrega y actitud. La verdadera superación nace de la constancia y el coraje para enfrentar cada desafío, puliendo tu espíritu con cada intento.
-                            </p>
-                        </div>
-                        <div class="pilar-card">
-                            <h4>🤝 Comunidad y Respeto</h4>
-                            <p>
-                                Desde el instante en que cruzas nuestra puerta, te conviertes en parte de la manada. Fomentamos un santuario de respeto, inclusión y colaboración, vital para el crecimiento de todos nuestros miembros: niños, jóvenes y adultos.
-                            </p>
-                        </div>
-                    </div>
-                    <p>
-                        En Raion BJJ, forjamos guerreros de carácter resiliente, preparados para los desafíos tanto dentro como fuera del tatami. Te invitamos a unirte a nuestra Manada y a liberar el león que reside en ti. <!-- Note: Capitalized "Manada" -->
-                    </p>
+                    <p id="philosophy-p3"></p>
                 </div>
             </div>
         </section>
 
-        <!-- ===================================================================== -->
-        <!-- --------------------------- BENEFITS SECTION ------------------------ -->
-        <!-- Highlights the advantages of training at Raion BJJ.                 -->
-        <!-- 'animate-on-scroll' class for JS-driven scroll animations.          -->
-        <!-- ===================================================================== -->
         <section id="benefits" class="content-section animate-on-scroll">
             <div class="container">
-                <h2>Beneficios de Entrenar con Nosotros</h2>
-                <p class="section-subtitle">Descubre lo que nos hace únicos y cómo transformamos vidas.</p>
-                <!-- Grid for displaying benefits -->
-                <div class="benefits-grid">
-                    <div class="benefit-item">
-                        <div class="benefit-icon"><img src="img/1.png">
-                       </div> <!-- Emoji or icon for the benefit -->
-                        <h3>Entrenamiento de Elite</h3>
-                        <p>Aprende de instructores altamente capacitados y técnicas comprobadas.</p>
+                <h2 id="benefits-title"></h2>
+                <p class="section-subtitle" id="benefits-subtitle"></p>
+                <div class="benefits-grid" id="benefits-grid">
                     </div>
-                    <div class="benefit-item">
-                        <div class="benefit-icon"></div><img src="img/2.png">
-                        <h3>Ambiente Inclusivo</h3>
-                        <p>Disfruta de un entorno seguro y motivador donde cada miembro es valorado.</p>
-                    </div>
-                    <div class="benefit-item">
-                       <div class="benefit-icon"></div><img src="img/4.png">
-                        <h3>Desarrollo Integral</h3>
-                        <p>Fortalece cuerpo y mente, adquiere disciplina y confianza.</p>
-                    </div>
-                    <div class="benefit-item">
-                        <div class="benefit-icon"></div><img src="img/3.png">
-                        <h3>Instalaciones Modernas</h3>
-                        <p>Entrena en espacios equipados con lo último en tecnología y confort.</p>
-                    </div>
-                </div>
             </div>
         </section>
 
-        <!-- ===================================================================== -->
-        <!-- -------------------------- VIDEO SECTION (Optional) ----------------- -->
-        <!-- Features an embedded video, potentially a promotional or showcase video. -->
-        <!-- 'animate-on-scroll' class for JS-driven scroll animations.          -->
-        <!-- ===================================================================== -->
         <section id="video" class="content-section animate-on-scroll">
             <div class="container">
-                <h2>Conoce Nuestra Energía</h2>
-                <p class="section-subtitle">Un vistazo a lo que sucede en Raion BJJ.</p>
+                <h2 id="video-title"></h2>
+                <p class="section-subtitle" id="video-subtitle"></p>
                 <div class="video-wrapper">
-                    <!-- HTML5 Video Player -->
-                    <!-- 'controls' attribute adds default video controls. -->
-                    <!-- 'loading="lazy"' defers loading until video is near viewport. -->
-                    <!-- 'poster' specifies an image to show while the video is downloading. -->
-                    <video controls loading="lazy" poster="img/video_poster.jpg">
+                    <video autoplay loop muted playsinline>
                         <source src="videos/promo.mp4" type="video/mp4">
-                        Tu navegador no soporta HTML5 video. <!-- Fallback text for older browsers -->
+                        Tu navegador no soporta HTML5 video.
                     </video>
                 </div>
                 <div class="video-cta">
-                    <a href="#contact" class="btn btn-secondary nav-link">¡Vive la experiencia!</a>
+                    <a href="#contact" class="btn btn-secondary nav-link" id="video-cta-btn"></a>
                 </div>
             </div>
         </section>
 
-        <!-- ===================================================================== -->
-        <!-- -------------------------- PROGRAMS SECTION ------------------------- -->
-        <!-- Details the different BJJ programs offered (e.g., kids, adults).    -->
-        <!-- 'animate-on-scroll' class for JS-driven scroll animations.          -->
-        <!-- ===================================================================== -->
         <section id="programs" class="content-section animate-on-scroll">
             <div class="container">
-                <h2>Programas Para Todos</h2>
-                <p class="section-subtitle">Clases diseñadas para niños, jóvenes y adultos, adaptadas a cada necesidad.</p>
-                <!-- Grid of program cards -->
-                <div class="program-cards">
-                    <div class="program-card">
-                        <img src="img/pequeños _ninjas1.png" alt="BJJ Infantil para Niños" loading="lazy">
-                        <div class="program-card-content">
-                            <h3>BJJ Infantil (Niños)</h3>
-                            <p>
-                                Clases lúdicas y seguras donde los niños descubren el Jiu-Jitsu, desarrollan coordinación, disciplina y aprenden a trabajar en equipo.
-                            </p>
-                            <a href="#schedule" class="btn btn-tertiary nav-link">Ver Horarios</a>
-                        </div>
+                <h2 id="programs-title"></h2>
+                <p class="section-subtitle" id="programs-subtitle"></p>
+                <div class="program-cards" id="program-cards-container">
                     </div>
-                    <div class="program-card">
-                        <img src="img/samurai2.png" alt="BJJ Juvenil" loading="lazy">
-                        <div class="program-card-content">
-                            <h3>BJJ Juvenil</h3>
-                            <p>
-                                Entrenamientos dinámicos para jóvenes, enfocados en perfeccionar técnicas, fomentar la autoconfianza y preparar a futuros competidores.
-                            </p>
-                            <a href="#schedule" class="btn btn-tertiary nav-link">Ver Horarios</a>
-                        </div>
-                    </div>
-                    <div class="program-card">
-                        <img src="img/Adultos2.png" alt="BJJ para Adultos" loading="lazy">
-                        <div class="program-card-content">
-                            <h3>BJJ Adultos</h3>
-                            <p>
-                                Clases de alto nivel para adultos y competidores que buscan perfeccionar sus técnicas avanzadas y desarrollar un espíritu competitivo.
-                            </p>
-                            <a href="#schedule" class="btn btn-tertiary nav-link">Ver Horarios</a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
 
-        <!-- ===================================================================== -->
-        <!-- -------------------------- SCHEDULE SECTION ------------------------- -->
-        <!-- Displays the class schedule, possibly as an image or table.         -->
-        <!-- 'animate-on-scroll' class for JS-driven scroll animations.          -->
-        <!-- ===================================================================== -->
         <section id="schedule" class="content-section animate-on-scroll">
             <div class="container">
-                <h2>Nuestros Horarios</h2>
-                <p class="section-subtitle">Encuentra el momento perfecto para entrenar.</p>
-                <!-- Image of the class schedule -->
-                <img src="img/horarioNeon2.jpg" alt="Horarios de Clases Raion BJJ" class="schedule-image" loading="lazy">
-                <!-- Call to action related to the schedule -->
+                <h2 id="schedule-title"></h2>
+                <p class="section-subtitle" id="schedule-subtitle"></p>
+                
+                <div class="schedule-table-wrapper" id="schedule-table-container">
+                    </div>
+
                 <div class="schedule-cta">
-                    <h3>¿Listo para el Desafío?</h3>
-                    <p>Tu viaje en el Jiu-Jitsu empieza con el primer paso. ¡Te esperamos para tu clase de prueba gratuita!</p>
-                    <p>📍 W FITNESS LA DEHESA | Av. El Rodeo #12850, Lo Barnechea</p>
-                    <a href="#contact" class="btn btn-primary nav-link">¡Reserva Tu Clase Gratis!</a>
+                    <h3 id="schedule-cta-title"></h3>
+                    <p id="schedule-cta-p1"></p>
+                    <p id="schedule-cta-p2">📍 W FITNESS LA DEHESA | Av. El Rodeo #12850, Lo Barnechea</p>
+                    <a href="#contact" class="btn btn-primary nav-link" id="schedule-cta-btn"></a>
                 </div>
             </div>
         </section>
 
-        <!-- ===================================================================== -->
-        <!-- ------------------------- INSTRUCTOR SECTION ------------------------ -->
-        <!-- Information about the BJJ instructor(s).                            -->
-        <!-- 'animate-on-scroll' class for JS-driven scroll animations.          -->
-        <!-- ===================================================================== -->
         <section id="instructors" class="content-section animate-on-scroll">
             <div class="container">
-                <h2>Sobre el Instructor</h2>
-                <p class="section-subtitle">Conoce al líder que guía nuestra manada.</p>
+                <h2 id="instructor-title"></h2>
+                <p class="section-subtitle" id="instructor-subtitle"></p>
                 <div class="instructor-content">
                     <div class="instructor-image">
                         <img src="img/Foto Perfil.jpeg" alt="Profesor Pablo León, Instructor de Raion BJJ" loading="lazy">
                     </div>
                     <div class="instructor-bio">
-                        <h3>Prof. Pablo León</h3>
-                        <p>
-                            El Profesor Pablo León, cinturón negro con más de una década de dedicación al Brazilian Jiu-Jitsu, es un especialista consumado con una sólida formación que abarca diversas artes marciales.
-                        </p>
-                        <p>
-                            Su extensa trayectoria, forjada en prestigiosas academias, gimnasios y centros educativos, le permite impartir una instrucción de élite. El Profesor León cultiva un ambiente de riguroso respeto y constante superación, liderando Raion BJJ – orgullosa filial de Focus Academy – con la firme misión de guiar a cada estudiante en el descubrimiento y desarrollo de su máximo potencial.
-                        </p>
+                        <h3 id="instructor-name"></h3>
+                        <p class="instructor-subtitle" id="instructor-belt"></p>
+                        <p id="instructor-bio-p1"></p>
+                        <p id="instructor-bio-p2"></p>
+                        <p><strong id="instructor-bio-p3-label"></strong> <span id="instructor-bio-p3-text"></span></p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===================================================================== -->
-        <!-- ------------------------ TESTIMONIALS SECTION ----------------------- -->
-        <!-- Displays quotes or feedback from students/members.                   -->
-        <!-- Features an auto-scrolling list of testimonials managed by JS.        -->
-        <!-- 'animate-on-scroll' class for JS-driven scroll animations.          -->
-        <!-- ===================================================================== -->
         <section id="testimonials" class="content-section animate-on-scroll">
             <div class="container">
-                <h2>Testimonios</h2>
-                <p class="section-subtitle">La experiencia de nuestra manada</p>
-                <!-- Wrapper for the scrolling testimonial list -->
+                <h2 id="testimonials-title"></h2>
+                <p class="section-subtitle" id="testimonials-subtitle"></p>
                 <div class="testimonial-scroll-wrapper">
-                    <div class="testimonial-list"> <!-- Testimonial items will be listed here -->
-                        <div class="testimonial-item">
-                            <p>"Entrenar en Raion ha sido transformador. Cada clase me motiva a ser mejor."</p>
-                            <cite>– Francisco Aracena</cite>
+                    <div class="testimonial-list" id="testimonial-list">
                         </div>
-                        <div class="testimonial-item">
-                            <p>"Raion no es solo una academia, es un lugar donde se forma carácter, disciplina y comunidad."</p>
-                            <cite>– Matías Errázuriz</cite>
-                        </div>
-                        <div class="testimonial-item">
-                            <p>"Desde que llegué a Raion, encontré respeto, desafío y camaradería. Aquí se crece."</p>
-                            <cite>– Max O'krey</cite>
-                        </div>
-                        <div class="testimonial-item">
-                            <p>"El nivel técnico es altísimo y el ambiente es insuperable."</p>
-                            <cite>– Nicolás Castillo</cite>
-                        </div>
-                        <div class="testimonial-item">
-                            <p>"Mi hijo solía ser tímido, pero ahora se nota más seguro y feliz."</p>
-                            <cite>– Jorge Hernández, padre</cite>
-                        </div>
-                         <div class="testimonial-item">
-                            <p>"Desde que mi hija comenzó en Raion, su confianza ha crecido muchísimo."</p>
-                            <cite>– María Gómez, madre</cite>
-                        </div>
-                        <!-- More testimonials can be added here -->
-                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===================================================================== -->
-        <!-- --------------------------- CONTACT SECTION ------------------------- -->
-        <!-- Provides contact information, a contact form, and a map.            -->
-        <!-- 'animate-on-scroll' class for JS-driven scroll animations.          -->
-        <!-- ===================================================================== -->
+        <section id="blog" class="content-section animate-on-scroll">
+            <div class="container">
+                <h2 id="blog-title"></h2>
+                <p class="section-subtitle" id="blog-subtitle"></p>
+                <div class="program-cards" id="blog-posts-container">
+                    </div>
+            </div>
+        </section>
+
         <section id="contact" class="content-section animate-on-scroll">
             <div class="container">
-                <h2>
-                    <img src="img/leon_glow_green.png" alt="" class="h2-logo" aria-hidden="true"> <!-- Decorative icon -->
-                    Únete a la Manada
-                    <img src="img/leon_glow_green.png" alt="" class="h2-logo" aria-hidden="true"> <!-- Decorative icon -->
-                </h2>
-                <p class="section-subtitle">Agenda tu clase de prueba, consulta horarios o envíanos tus preguntas.</p>
-                
-                <!-- START: NEW STUDENT GROUP PICTURE SECTION -->
+                <h2><img src="img/leon_glow_green.png" alt="" class="h2-logo" aria-hidden="true"> Únete a la Manada <img src="img/leon_glow_green.png" alt="" class="h2-logo" aria-hidden="true"></h2>
+                <p class="section-subtitle" id="contact-subtitle"></p>
                 <div class="student-group-photo-container animate-on-scroll">
                     <img src="img/Grupal Focus.jpeg" alt="Nuestra Manada - Estudiantes de Raion BJJ" class="student-group-photo" loading="lazy">
                 </div>
-                <!-- END: NEW STUDENT GROUP PICTURE SECTION -->
-
-                <!-- Flex container for contact info and form -->
                 <div class="contact-flex-container">
-                    <!-- Contact Information Block -->
                     <div class="contact-info">
+                        <h3>Información de Contacto</h3>
                         <p><strong>Academia Raion BJJ</strong></p>
                         <p>📍 Dentro de W FITNESS LA DEHESA</p>
-                        <p>Av. El Rodeo #12850, Lo Barnechea, Chile</p>
-                        <p>📞 <a href="tel:+56996787321">+56 9 9678 7321</a></p>
-                        <p>✉️ <a href="mailto:raionbjjacademy@gmail.com">raionbjjacademy@gmail.com</a></p>
-                        <p><strong>Síguenos:</strong></p>
+                        <p>Av. El Rodeo #12850, Lo Barnechea, Santiago</p>
+                        <p>📞 <a href="tel:+56996787321" id="contact-phone"></a></p>
+                        <p>✉️ <a href="mailto:raionbjjacademy@gmail.com" id="contact-email"></a></p>
+                        <p><strong>Síguenos en Redes Sociales:</strong></p>
                         <p class="social-links">
                             <a href="https://www.instagram.com/raion_bjj/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Raion BJJ"><img src="img/insta_white.png" alt="Instagram" class="social-icon"></a>
                             <a href="https://www.tiktok.com/@raionbjj" target="_blank" rel="noopener noreferrer" aria-label="TikTok Raion BJJ"><img src="img/tiktok_white.png" alt="TikTok" class="social-icon"></a>
                             <a href="https://www.facebook.com/people/Raion-BJJ/61555192664018/" target="_blank" rel="noopener noreferrer" aria-label="Facebook Raion BJJ"><img src="img/facebook_white.png" alt="Facebook" class="social-icon"></a>
                         </p>
-                        <!-- Embedded Google Map -->
                         <div class="map-container">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3331.8600053781107!2d-70.5075178!3d-33.3742317!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cb9e5f6d7d7b%3A0x7b3f9f9c8a5f5c8!2sAv.%20El%20Rodeo%2012850%2C%20Lo%20Barnechea%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses-419!2scl!4v1678886011511!5m2!1ses-419!2scl" width="100%" height="350" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de ubicación de Raion BJJ"></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3332.203333984381!2d-70.50995182449499!3d-33.36531899388835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c939e6440575%3A0x67341c863aeb183!2sW%20FITNESS%20LA%20DEHESA!5e0!3m2!1ses-419!2scl!4v1716335345722!5m2!1ses-419!2scl" width="100%" height="350" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de ubicación de Raion BJJ"></iframe>
                         </div>
                     </div>
-
-                    <!-- Contact Form Block -->
                     <div class="contact-form-container">
-                        <h3>Envíanos tu Consulta</h3>
-                        <!-- 'novalidate' disables default browser validation, allowing custom JS validation. -->
+                        <h3>Agenda tu Clase de Prueba Gratis</h3>
                         <form id="contactForm" action="#" method="POST" novalidate>
                             <div class="form-group">
                                 <label for="name">Nombre Completo:</label>
                                 <input type="text" id="name" name="name" required placeholder="Ej: Juan Pérez">
-                                <span class="error-message" id="nameError"></span> <!-- For JS validation error messages -->
+                                <span class="error-message" id="nameError"></span>
                             </div>
                             <div class="form-group">
                                 <label for="email">Correo Electrónico:</label>
@@ -437,12 +222,11 @@
                                 <span class="error-message" id="emailError"></span>
                             </div>
                             <div class="form-group">
-                                <label for="message">Mensaje:</label>
-                                <textarea id="message" name="message" required placeholder="Escribe aquí tu consulta..."></textarea>
+                                <label for="message">Mensaje (Opcional):</label>
+                                <textarea id="message" name="message" placeholder="Ej: ¿Tienen clases para niños de 8 años?"></textarea>
                                 <span class="error-message" id="messageError"></span>
                             </div>
-                            <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
-                            <!-- For displaying overall form submission status (e.g., success, error) by JS -->
+                            <button type="submit" class="btn btn-primary">Reservar Mi Clase</button>
                             <div id="formStatus"></div>
                         </form>
                     </div>
@@ -451,32 +235,27 @@
         </section>
     </main>
 
-    <!-- ========================================================================= -->
-    <!-- --------------------------- FOOTER SECTION ------------------------------ -->
-    <!-- Contains copyright information and other footer content.                -->
-    <!-- ========================================================================= -->
     <footer>
         <div class="container">
-            <p>&copy; <span id="currentYear"></span> Raion BJJ Lo Barnechea. Forjado con Respeto, Disciplina y Pasión.</p>
-            <!-- The year in 'currentYear' span is updated by script.js -->
+            <p>© <span id="currentYear"></span> Raion BJJ Lo Barnechea. Forjado con Respeto, Disciplina y Pasión.</p>
         </div>
     </footer>
+    
+    <div id="blogModal" class="blog-modal">
+        <div class="blog-modal-content">
+            <span class="blog-modal-close" id="closeBlogModal">×</span>
+            <h2 id="modal-blog-title"></h2>
+            <div id="modal-blog-body"></div>
+        </div>
+    </div>
 
-    <!-- ========================================================================= -->
-    <!-- ----------------------- FLOATING ACTION BUTTONS ----------------------- -->
-    <!-- ========================================================================= -->
-    <!-- Floating WhatsApp Button for quick contact -->
     <a href="https://wa.me/56996787321?text=Hola!%20Me%20gustaría%20más%20información%20sobre%20las%20clases%20de%20Raion%20BJJ." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
         <img src="img/whatblanco.png" alt="WhatsApp Icon">
     </a>
-
-    <!-- Back to Top Button (Functionality controlled by script.js) -->
-    <button id="backToTopBtn" title="Volver arriba">&uarr;</button> <!-- '&uarr;' is the HTML entity for an upward arrow -->
-
-    <!-- ========================================================================= -->
-    <!-- --------------------------- JAVASCRIPT FILES -------------------------- -->
-    <!-- 'defer' ensures the script is executed after the HTML is fully parsed.  -->
-    <!-- ========================================================================= -->
+    <button id="backToTopBtn" title="Volver arriba">↑</button>
+    
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="content.js"></script>
     <script src="script.js" defer></script>
 </body>
 </html>
