@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #000000;
+  --fg: #ffffff;
+  --accent: #E50000; /* Rojo vibrante y puro */
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-montserrat), sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tipografía de impacto */
+.heading-hero {
+  font-family: var(--font-archivo-black), sans-serif;
+  letter-spacing: -0.04em;
+  line-height: 0.85;
+}
+
+/* Botón Premium */
+.btn-premium {
+  @apply relative overflow-hidden bg-white text-black font-bold uppercase tracking-widest text-xs px-10 py-5 inline-flex items-center justify-center gap-3 transition-transform hover:scale-105 active:scale-95;
+}
+
+/* Utilidades para ocultar scrollbar pero permitir scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
