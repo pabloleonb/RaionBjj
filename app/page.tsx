@@ -26,7 +26,7 @@ const SCHEDULE = [
   { time: "10:00 - 11:00", days: ["—", "—", "—", "—", "—", "Cadetes"] },
   { time: "11:00 - 12:00", days: ["—", "—", "—", "—", "—", "Raion Cubs"] },
   { time: "11:30 - 12:30", days: ["BJJ (Gi)", "BJJ (No-Gi)", "BJJ (Gi)", "BJJ (No-Gi)", "BJJ (Gi)", "—"] },
-  { time: "17:00 - 18:00", days: ["Cadetes", "Cadetes", "Cadetes", "Cadetes", "—", "—"] },
+  { time: "17:30 - 18:30", days: ["Cadetes", "Cadetes", "Cadetes", "Cadetes", "—", "—"] },
   { time: "20:00", days: ["BJJ (Gi)", "BJJ (No-Gi)", "BJJ (Gi)", "BJJ (No-Gi)", "BJJ (Gi) [19:00]", "—"] },
 ];
 
