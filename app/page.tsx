@@ -41,7 +41,7 @@ const PROGRAMS = [
 const INSTRUCTORS_DATA = [
   { 
     name: "Nicolas Castillo", 
-    role: "Profesor Asistente Adultos y Cadetes", 
+    role: "Profesor Adultos y Cadetes", 
     belt: "Brown Belt", 
     beltColor: "#6F4E37",
     img: "/img/profesores/Nicolas Castillo.png",
