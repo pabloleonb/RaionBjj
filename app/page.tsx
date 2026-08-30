@@ -45,7 +45,7 @@ const INSTRUCTORS_DATA = [
     belt: "Brown Belt", 
     beltColor: "#6F4E37",
     img: "/img/profesores/Nicolas Castillo.png",
-    bio: "Especialista en la maestría de los fundamentos. Como Profesor Asistente de Adultos y Cadetes, su enfoque se centra en construir una base sólida e inquebrantable. Su metodología destaca por la paciencia técnica y una claridad excepcional."
+    bio: "Especialista en la maestría de los fundamentos. Como Profesor de Adultos y Cadetes, su enfoque se centra en construir una base sólida e inquebrantable. Su metodología destaca por la paciencia técnica y una claridad excepcional."
   },
   { 
     name: "Clara Figueroa", 
