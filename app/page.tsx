@@ -23,7 +23,7 @@ import {
 
 // Horarios de clases
 const SCHEDULE = [
-  { time: "07:30 - 08:30", days: ["BJJ (Fundamentales)", "—", "BJJ (Fundamentales)", "—", "BJJ (Fundamentales)", "—"] },
+  { time: "07:30 - 08:30", days: ["BJJ (Fundamentos)", "—", "BJJ (Fundamentos)", "—", "BJJ (Fundamentos)", "—"] },
   { time: "10:00 - 11:00", days: ["—", "—", "—", "—", "—", "Cadetes"] },
   { time: "11:00 - 12:00", days: ["—", "—", "—", "—", "—", "Raion Cubs"] },
   { time: "11:30 - 12:30", days: ["BJJ (Gi)", "BJJ (No-Gi)", "BJJ (Gi)", "BJJ (No-Gi)", "BJJ (Gi)", "—"] },
