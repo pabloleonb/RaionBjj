@@ -624,7 +624,7 @@ export default function RaionFinalEdition() {
                        <h2 className="font-display text-5xl md:text-7xl uppercase italic font-black leading-none mb-8">PISA EL <br/> <span className="text-[#E50000]">TATAMI.</span></h2>
                        <p className="text-lg text-white/50 mb-12 max-w-sm italic font-light">Agenda tu primera sesión sin compromiso y únete a la manada.</p>
                        <div className="space-y-6 mb-16 italic uppercase font-bold text-[10px] tracking-widest opacity-60">
-                          <a href="https://www.google.com/maps/search/?api=1&query=Av.+El+Rodeo+12850,+Lo+Barnechea" target="_blank" className="flex items-center gap-4 hover:text-[#E50000] transition-colors"><MapPin className="text-[#E50000]" size={20} /> Av. El Rodeo #12850</a>
+                          <a href="https://www.google.com/maps/search/?api=1&query=Av.+La+Dehesa+4589,+Lo+Barnechea" target="_blank" className="flex items-center gap-4 hover:text-[#E50000] transition-colors"><MapPin className="text-[#E50000]" size={20} /> Av. El Rodeo #12850</a>
                           <a href="https://wa.me/56996787321" target="_blank" className="flex items-center gap-4 hover:text-[#E50000] transition-colors"><Phone className="text-[#E50000]" size={20} /> +56 9 9678 7321</a>
                           <a href="https://instagram.com/raion_bjj" target="_blank" className="flex items-center gap-4 hover:text-[#E50000] transition-colors"><Instagram className="text-[#E50000]" size={20} /> @raion_bjj</a>
                        </div>
