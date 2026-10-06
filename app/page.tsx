@@ -28,8 +28,9 @@ const SCHEDULE = [
   { time: "11:00 - 12:00", days: ["—", "—", "—", "—", "—", "Raion Cubs"] },
   { time: "11:30 - 12:30", days: ["BJJ (Gi)", "BJJ (No-Gi)", "BJJ (Gi)", "BJJ (No-Gi)", "BJJ (Gi)", "—"] },
   { time: "17:30 - 18:30", days: ["Cadetes", "Cadetes", "Cadetes", "Cadetes", "—", "—"] },
-  { time: "19:00 - 20:00", days: ["BJJ (No-Gi)", "—", "BJJ (No-Gi)", "—", "LUCHAS", "—"] },
-  { time: "20:00", days: ["BJJ (Gi)", "BJJ (No-Gi)", "BJJ (Gi)", "BJJ (No-Gi)", "—", "—"] },
+  { time: "18:30 - 20:00", days: ["Kickboxing", "—", "Kickboxing", "—", "Kickboxing", "—"] },
+  { time: "19:00 - 20:00", days: ["—", "Judo", "—", "Judo", "—", "—"] },
+  { time: "20:00", days: ["BJJ (Gi)", "BJJ (No-Gi)", "BJJ (Gi)", "BJJ (No-Gi)", "LUCHAS", "—"] },
 ];
 
 // Programas de entrenamiento
